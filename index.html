@@ -1,0 +1,2509 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><meta name='viewport' content='width=device-width, initial-scale=1'/><meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WHITE COAT WARRIORS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* All CSS styles remain the same as in the original file */
+        :root {
+            --primary-blue: #1a56db;
+            --secondary-blue: #0ea5e9;
+            --dark-blue: #1e3a8a;
+            --light-blue: #dbeafe;
+            --accent-green: #10b981;
+            --accent-orange: #f59e0b;
+            --accent-red: #ef4444;
+            --accent-purple: #8b5cf6;
+            --accent-pink: #ec4899;
+            --accent-teal: #14b8a6;
+            --accent-yellow: #fbbf24;
+            --accent-amber: #f59e0b;
+            --vibrant-blue: #3b82f6;
+            --vibrant-green: #22c55e;
+            --vibrant-purple: #a855f7;
+            --vibrant-pink: #e879f9;
+            --gradient-blue: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            --gradient-green: linear-gradient(135deg, var(--accent-green), #34d399);
+            --gradient-orange: linear-gradient(135deg, var(--accent-orange), #f97316);
+            --gradient-red: linear-gradient(135deg, var(--accent-red), #f87171);
+            --gradient-purple: linear-gradient(135deg, var(--accent-purple), #a78bfa);
+            --gradient-pink: linear-gradient(135deg, var(--accent-pink), #f472b6);
+            --gradient-teal: linear-gradient(135deg, var(--accent-teal), #2dd4bf);
+            --gradient-yellow: linear-gradient(135deg, var(--accent-yellow), #f59e0b);
+            --gradient-vibrant: linear-gradient(135deg, #4f46e5, #7c3aed, #ec4899);
+            --shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 2px 5px rgba(0, 0, 0, 0.08);
+            --shadow-xl: 0 5px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 6px;
+            color: #1e3a8a;
+            font-size: 8.25px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 9px;
+        }
+
+        .logo h1 {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--dark-blue);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.08);
+            margin-bottom: 1.5px;
+            background: var(--gradient-vibrant);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .logo p {
+            color: var(--primary-blue);
+            font-weight: 600;
+            font-size: 0.525rem;
+        }
+
+        .page {
+            background: white;
+            border-radius: 9px;
+            padding: 9px;
+            box-shadow: var(--shadow-xl);
+            width: 100%;
+            display: none;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+            backdrop-filter: blur(10px);
+        }
+
+        .active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .promo-banner {
+            background: var(--gradient-vibrant);
+            color: white;
+            padding: 11.25px;
+            border-radius: 7.5px;
+            margin-bottom: 11.25px;
+            text-align: center;
+            font-size: 0.45rem;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .promo-banner::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+            z-index: 1;
+        }
+
+        .promo-banner h2 {
+            font-size: 0.675rem;
+            margin-bottom: 6px;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 2;
+        }
+
+        .promo-banner p {
+            line-height: 1.4;
+            text-align: justify;
+            position: relative;
+            z-index: 2;
+        }
+
+        .form-group {
+            margin-bottom: 6px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 1.5px;
+            font-weight: 600;
+            color: var(--dark-blue);
+            font-size: 0.525rem;
+        }
+
+        .form-input, .form-select {
+            width: 100%;
+            padding: 4.5px 6.75px;
+            border: 1.5px solid var(--light-blue);
+            border-radius: 3.75px;
+            font-size: 0.525rem;
+            background: #f8fafc;
+            transition: all 0.2s;
+        }
+
+        .form-input:focus, .form-select:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 2px rgba(26, 86, 219, 0.15);
+        }
+
+        .input-container {
+            position: relative;
+        }
+
+        .password-container .form-input {
+            padding-right: 22.5px;
+        }
+
+        .input-icon {
+            position: absolute;
+            right: 7.5px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary-blue);
+            font-size: 0.525rem;
+            cursor: pointer;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4.5px 7.5px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.525rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            gap: 3px;
+            width: 100%;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: var(--gradient-blue);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(26, 86, 219, 0.2);
+        }
+
+        .btn-contact {
+            background: var(--gradient-green);
+            color: white;
+        }
+
+        .btn-contact:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(16, 185, 129, 0.2);
+        }
+
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            color: white;
+        }
+
+        .btn-whatsapp:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(37, 211, 102, 0.2);
+        }
+
+        .btn-purple {
+            background: var(--gradient-purple);
+            color: white;
+        }
+
+        .btn-purple:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(139, 92, 246, 0.2);
+        }
+
+        .btn-red {
+            background: var(--gradient-red);
+            color: white;
+        }
+
+        .btn-red:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(239, 68, 68, 0.2);
+        }
+
+        .btn-orange {
+            background: var(--gradient-orange);
+            color: white;
+        }
+
+        .btn-orange:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(245, 158, 11, 0.2);
+        }
+
+        .error-box {
+            background: #fee2e2;
+            color: var(--accent-red);
+            padding: 3.75px 5.25px;
+            border-radius: 2.25px;
+            margin-top: 4.5px;
+            display: none;
+            font-weight: 600;
+            font-size: 0.525rem;
+            border-left: 2.25px solid var(--accent-red);
+        }
+
+        .success-box {
+            background: #d1fae5;
+            color: var(--accent-green);
+            padding: 3.75px 5.25px;
+            border-radius: 2.25px;
+            margin-top: 4.5px;
+            display: none;
+            font-weight: 600;
+            font-size: 0.525rem;
+            border-left: 2.25px solid var(--accent-green);
+        }
+
+        .notification-box {
+            background: #fef3c7;
+            color: #d97706;
+            padding: 7.5px;
+            border-radius: 4.5px;
+            margin-top: 7.5px;
+            font-weight: 600;
+            font-size: 0.525rem;
+            text-align: center;
+            border-left: 3px solid #f59e0b;
+        }
+
+        .quiz-notification {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            background: white;
+            padding: 11.25px;
+            border-radius: 7.5px;
+            box-shadow: var(--shadow-xl);
+            z-index: 1000;
+            display: none;
+            max-width: 225px;
+            border-left: 3.75px solid var(--accent-green);
+            animation: slideInRight 0.3s ease;
+            transform: translateX(100%);
+        }
+
+        .quiz-notification.show {
+            display: block;
+            transform: translateX(0);
+        }
+
+        .quiz-notification.warning {
+            border-left-color: var(--accent-orange);
+        }
+
+        .quiz-notification.error {
+            border-left-color: var(--accent-red);
+        }
+
+        .quiz-notification-content {
+            display: flex;
+            flex-direction: column;
+            gap: 7.5px;
+        }
+
+        .quiz-notification-title {
+            font-weight: 700;
+            font-size: 0.6rem;
+            color: var(--dark-blue);
+        }
+
+        .quiz-notification-message {
+            font-size: 0.525rem;
+            color: #4b5563;
+        }
+
+        .quiz-notification-actions {
+            display: flex;
+            gap: 6px;
+            justify-content: flex-end;
+        }
+
+        .quiz-notification-btn {
+            padding: 3px 6px;
+            border-radius: 3px;
+            font-size: 0.4875rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+        }
+
+        .quiz-notification-btn.primary {
+            background: var(--gradient-blue);
+            color: white;
+        }
+
+        .quiz-notification-btn.secondary {
+            background: #f3f4f6;
+            color: #4b5563;
+        }
+
+        @keyframes slideInRight {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+
+        .main-page-buttons {
+            display: grid;
+            gap: 6px;
+            margin-top: 9px;
+        }
+
+        .quiz-access-section {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            margin-top: 9px;
+        }
+
+        .quiz-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 6px;
+            padding-bottom: 4.5px;
+            border-bottom: 1.5px solid var(--light-blue);
+        }
+
+        .quiz-title-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2.25px;
+            width: 80%;
+        }
+
+        .quiz-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+            font-size: 0.525rem;
+            color: var(--dark-blue);
+            font-weight: 600;
+        }
+
+        .timer-container {
+            display: flex;
+            gap: 4.5px;
+            justify-content: flex-end;
+            width: 100%;
+        }
+
+        .timer, .question-timer {
+            background: var(--gradient-blue);
+            color: white;
+            padding: 2.25px 4.5px;
+            border-radius: 7.5px;
+            font-weight: 700;
+            font-size: 0.525rem;
+            box-shadow: var(--shadow);
+            white-space: nowrap;
+        }
+
+        .timer.total-timer {
+            background: var(--gradient-orange);
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 4.5px;
+            background: #e5e7eb;
+            border-radius: 2.25px;
+            overflow: hidden;
+            margin-bottom: 6px;
+            box-shadow: var(--shadow);
+        }
+
+        .progress-bar {
+            height: 100%;
+            border-radius: 2.25px;
+            transition: width 0.4s ease;
+            background: var(--gradient-vibrant);
+        }
+
+        .question-nav {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(10.5px, 1fr));
+            gap: 2.25px;
+            margin-bottom: 6px;
+        }
+
+        .question-nav-item {
+            width: 10.5px;
+            height: 10.5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 2.25px;
+            font-weight: 700;
+            font-size: 0.375rem;
+            cursor: pointer;
+            background: white;
+            border: 1.5px solid var(--light-blue);
+            transition: all 0.2s;
+        }
+
+        .question-nav-item.current {
+            background: var(--gradient-vibrant);
+            color: white;
+            border-color: var(--primary-blue);
+            transform: scale(1.1);
+        }
+
+        .question-nav-item.solved {
+            background: var(--gradient-green);
+            color: white;
+            border-color: var(--accent-green);
+        }
+
+        .question-nav-item.visited {
+            background: var(--gradient-orange);
+            color: white;
+            border-color: var(--accent-orange);
+        }
+
+        .question-container {
+            margin-bottom: 6px;
+        }
+
+        .question-text {
+            font-size: 0.5625rem;
+            font-weight: 700;
+            margin-bottom: 4.5px;
+            color: var(--dark-blue);
+        }
+
+        .options-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3px;
+            margin-bottom: 6px;
+        }
+
+        .option {
+            padding: 3.75px 6px;
+            border: 1.5px solid var(--light-blue);
+            border-radius: 3.75px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 500;
+            background: #f8fafc;
+            font-size: 0.525rem;
+            position: relative;
+        }
+
+        .option:hover {
+            border-color: var(--primary-blue);
+            background: #e0f2fe;
+            transform: translateY(-1px);
+        }
+
+        .option.selected {
+            border-color: var(--primary-blue);
+            background: #dbeafe;
+        }
+
+        .option.correct {
+            border-color: var(--accent-green);
+            background: #d1fae5;
+        }
+
+        .option.incorrect {
+            border-color: var(--accent-red);
+            background: #fee2e2;
+        }
+
+        .option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .reasoning {
+            background: #f8fafc;
+            border-radius: 3.75px;
+            padding: 6px;
+            margin-top: 6px;
+            display: none;
+            border-left: 2.25px solid var(--primary-blue);
+            font-size: 0.525rem;
+        }
+
+        .reasoning-title {
+            font-weight: 700;
+            margin-bottom: 3px;
+            color: var(--dark-blue);
+            font-size: 0.5625rem;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            margin-top: 9px;
+        }
+
+        .nav-btn {
+            padding: 3.75px 5.25px;
+            border-radius: 3.75px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+            font-size: 0.525rem;
+            display: flex;
+            align-items: center;
+            gap: 2.25px;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .btn-back {
+            background: linear-gradient(135deg, #3b82f6, #60a5fa);
+            color: white;
+        }
+
+        .btn-next {
+            background: linear-gradient(135deg, #1d4ed8, #3b82f6);
+            color: white;
+        }
+
+        .btn-reasoning {
+            background: var(--gradient-purple);
+            color: white;
+        }
+
+        .btn-reasoning.disabled {
+            background: #dc3545;
+            color: white;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .btn-reasoning.disabled:hover {
+            background: #dc3545;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .btn-submit {
+            background: var(--gradient-green);
+            color: white;
+        }
+
+        .results-header-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 3.75px;
+            margin-bottom: 9px;
+        }
+
+        .results-header-buttons .btn {
+            padding: 3px 4.5px;
+            font-size: 0.4875rem;
+            width: 100%;
+        }
+
+        .result-card {
+            background: linear-gradient(135deg, #f8fafc, #e0f2fe);
+            border-radius: 6px;
+            padding: 9px;
+            text-align: center;
+            margin-bottom: 9px;
+            box-shadow: var(--shadow);
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .result-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-vibrant);
+        }
+
+        .result-card h2 {
+            font-size: 0.675rem;
+            margin-bottom: 6px;
+            color: var(--dark-blue);
+        }
+
+        .result-card table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.525rem;
+            margin-top: 6px;
+            box-shadow: var(--shadow);
+        }
+
+        .result-card th, .result-card td {
+            padding: 3.75px;
+            border: 1px solid #dbeafe;
+            text-align: left;
+        }
+
+        .result-card th {
+            background-color: var(--light-blue);
+            font-weight: 600;
+        }
+
+        .result-card td {
+            background-color: #f8fafc;
+        }
+
+        .result-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 4.5px;
+            margin-top: 9px;
+        }
+
+        .all-mcqs-list {
+            display: flex;
+            flex-direction: column;
+            gap: 11.25px;
+        }
+
+        .all-mcq-item {
+            padding: 7.5px;
+            border: 1px solid var(--light-blue);
+            border-radius: 6px;
+            background: #f8fafc;
+            position: relative;
+        }
+
+        .all-mcq-item .question-text {
+            color: var(--dark-blue);
+            font-size: 0.6rem;
+            font-weight: 700;
+        }
+
+        .all-mcq-options {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            margin-top: 4.5px;
+        }
+
+        .all-mcq-option {
+            font-size: 0.525rem;
+            padding: 3px 4.5px;
+            border-radius: 3px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .all-mcq-option.correct {
+            background: #d1fae5;
+            color: var(--accent-green);
+            font-weight: 600;
+            border-color: #a7f3d0;
+        }
+
+        .all-mcq-reasoning {
+            margin-top: 6px;
+            font-size: 0.525rem;
+            color: #4b5563;
+            padding: 6px;
+            background: #f8fafc;
+            border-radius: 3px;
+            border-left: 2.25px solid var(--primary-blue);
+        }
+
+        .all-mcq-reasoning strong {
+            color: var(--dark-blue);
+        }
+
+        .quick-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 9px;
+            gap: 6px;
+        }
+
+        .stat-card {
+            flex: 1;
+            background: white;
+            border-radius: 4.5px;
+            padding: 6px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border-top: 2px solid var(--primary-blue);
+        }
+
+        .stat-card.correct {
+            border-top-color: var(--accent-green);
+        }
+
+        .stat-card.incorrect {
+            border-top-color: var(--accent-red);
+        }
+
+        .stat-card.unanswered {
+            border-top-color: var(--accent-orange);
+        }
+
+        .stat-value {
+            font-size: 0.9rem;
+            font-weight: 800;
+            margin-bottom: 1.5px;
+        }
+
+        .stat-label {
+            font-size: 0.4875rem;
+            font-weight: 600;
+            color: #6b7280;
+        }
+
+        .performance-meter {
+            width: 100%;
+            height: 6px;
+            background: #e5e7eb;
+            border-radius: 3px;
+            overflow: hidden;
+            margin: 6px 0;
+        }
+
+        .performance-fill {
+            height: 100%;
+            border-radius: 3px;
+            transition: width 0.4s ease;
+            background: var(--gradient-vibrant);
+        }
+
+        @media (max-width: 768px) {
+            .quiz-header {
+                flex-direction: column;
+                gap: 4.5px;
+                align-items: flex-start;
+            }
+            
+            .navigation-buttons {
+                grid-template-columns: 1fr;
+            }
+            
+            .timer-container {
+                position: relative;
+                top: auto;
+                right: auto;
+                margin-top: 3.75px;
+                justify-content: flex-end;
+                width: 100%;
+            }
+            
+            .quiz-title-container {
+                width: 100%;
+            }
+            
+            .result-actions {
+                flex-direction: column;
+            }
+            
+            .promo-banner {
+                padding: 9px;
+            }
+            
+            .promo-banner h2 {
+                font-size: 0.6rem;
+            }
+            
+            .promo-banner p {
+                font-size: 0.4125rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-notification" id="quiz-notification">
+        <div class="quiz-notification-content">
+            <div class="quiz-notification-title" id="notification-title">Quiz Progress Found</div>
+            <div class="quiz-notification-message" id="notification-message">You have an unfinished quiz. Do you want to continue where you left off?</div>
+            <div class="quiz-notification-actions">
+                <button class="quiz-notification-btn secondary" id="notification-no">Start Fresh</button>
+                <button class="quiz-notification-btn primary" id="notification-yes">Continue</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="logo">
+            <h1>WHITE COAT WARRIORS</h1>
+            <p>Excellence in Educational Assessment</p>
+        </div>
+
+        <div id="signin-page" class="page active">
+            <div class="promo-banner">
+                <h2><i class="fas fa-graduation-cap"></i> Unlock Your Potential with WHITE COAT WARRIORS</h2>
+                <p>Boost your preparation with WHITE COAT WARRIORS's realistic online tests, crafted by experts to mirror the actual exam's pattern and challenge. Experience instant feedback, detailed analysis, and flexible online access – your pathway to confidence and success!</p>
+            </div>
+            
+            <h2><i class="fas fa-lock"></i> Access Test</h2>
+            <p>Sign in or use your access code</p>
+            
+            <div class="main-page-buttons">
+                <button class="btn btn-primary" onclick="showQuizAccessForm()">
+                    <i class="fas fa-key"></i>
+                    <span>Sign In with Quiz Access Code</span>
+                </button>
+                <button class="btn btn-primary" onclick="showRegistrationPage()">
+                    <i class="fas fa-user-plus"></i>
+                    <span>Sign Up to Get Quiz Access</span>
+                </button>
+                <button class="btn btn-purple" onclick="showDeveloperAccessForm()">
+                    <i class="fas fa-code"></i>
+                    <span>Developer Access</span>
+                </button>
+            </div>
+            
+            <div id="developer-access-form" class="quiz-access-section">
+                <h3><i class="fas fa-user-secret"></i> Developer Login</h3>
+                <div class="password-container input-container">
+                    <input type="password" id="developerPassword" class="form-input" placeholder="Enter the Developer Password">
+                    <i class="fas fa-eye-slash input-icon" id="toggleDeveloperPassword"></i>
+                </div>
+                <button class="btn btn-purple" onclick="checkDeveloperPassword()">
+                    <span>Log In</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <div id="dev-error-box" class="error-box">
+                    <i class="fas fa-exclamation-circle"></i> Invalid developer password.
+                </div>
+            </div>
+            
+            <div id="quiz-access-form" class="quiz-access-section">
+                <h3><i class="fas fa-key"></i> Enter Quiz Access Code</h3>
+                <div class="password-container input-container">
+                    <input type="password" id="quizAccessCode" class="form-input" placeholder="Enter your 12-Digit Quiz Access Code here">
+                    <i class="fas fa-eye-slash input-icon" id="toggleQuizAccessCode"></i>
+                </div>
+                <button class="btn btn-primary" onclick="accessQuiz(document.getElementById('quizAccessCode').value)">
+                    <span>Access Quiz</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <div id="quiz-error-box" class="error-box">
+                    <i class="fas fa-exclamation-circle"></i> Invalid quiz access code.
+                </div>
+            </div>
+            
+        </div>
+
+        <div id="registration-page" class="page">
+            <div class="promo-banner">
+                <h2><i class="fas fa-graduation-cap"></i> Unlock Your Potential with WHITE COAT WARRIORS</h2>
+                <p>Boost your preparation with WHITE COAT WARRIORS's realistic online tests, crafted by experts to mirror the actual exam's pattern and challenge. Experience instant feedback, detailed analysis, and flexible online access – your pathway to confidence and success!</p>
+            </div>
+            
+            <h2><i class="fas fa-user-edit"></i> Student Registration</h2>
+            <p>Please provide your details to register</p>
+            
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-user"></i> Student Name</label>
+                <input type="text" id="studentName" class="form-input" placeholder="Enter your full name">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-user-friends"></i> Father Name</label>
+                <input type="text" id="fatherName" class="form-input" placeholder="Enter your father's name">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-envelope"></i> Email Address</label>
+                <input type="email" id="email" class="form-input" placeholder="Enter your email address">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-phone"></i> Mobile Number (WhatsApp)</label>
+                <input type="tel" id="mobile" class="form-input" placeholder="+92XXXXXXXXXX">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-city"></i> City / District</label>
+                <input type="text" id="city" class="form-input" placeholder="Enter your city/district">
+            </div>
+            <button class="btn btn-primary" onclick="handleRegistration()">
+                <span>Submit to Get Access to Quiz</span>
+                <i class="fas fa-arrow-right"></i>
+            </button>
+            <button class="btn btn-red" style="margin-top: 3.75px;" onclick="showPage('signin-page')">
+                <i class="fas fa-chevron-left"></i> Back to Home
+            </button>
+        </div>
+
+        <div id="quiz-page" class="page">
+            <div class="promo-banner">
+                <h2><i class="fas fa-graduation-cap"></i> Unlock Your Potential with WHITE COAT WARRIORS</h2>
+                <p>Boost your preparation with WHITE COAT WARRIORS's realistic online tests, crafted by experts to mirror the actual exam's pattern and challenge. Experience instant feedback, detailed analysis, and flexible online access – your pathway to confidence and success!</p>
+            </div>
+
+            <div class="quiz-header">
+                <div class="quiz-title-container">
+                    <h2 id="quiz-title"></h2>
+                    <div class="quiz-info">
+                        <span><i class="fas fa-book"></i> Subject: <span id="quiz-subject">English Grammar</span></span>
+                        <span><i class="fas fa-clock"></i> Per MCQ: <span id="per-mcq-time">1</span> Minute</span>
+                    </div>
+                </div>
+            </div>
+            <div class="timer-container">
+                <div class="timer" id="question-timer">60</div>
+                <div class="timer total-timer" id="timer">40:00</div>
+            </div>
+
+            <div class="progress-container">
+                <div class="progress-bar" id="quiz-progress"></div>
+            </div>
+
+            <div class="question-nav" id="question-nav"></div>
+            
+            <div class="question-container">
+                <div class="question-text" id="question-text"></div>
+                <div class="options-container" id="options-container"></div>
+                <div class="reasoning" id="reasoning">
+                    <div class="reasoning-title"><i class="fas fa-lightbulb"></i> Explanation:</div>
+                    <div id="reasoning-text"></div>
+                </div>
+            </div>
+            
+            <div class="navigation-buttons">
+                <button class="nav-btn btn-back" onclick="navigateQuestion('prev')">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+                <button class="nav-btn btn-next" onclick="navigateQuestion('next')">
+                    Next <i class="fas fa-arrow-right"></i>
+                </button>
+                <button class="nav-btn btn-reasoning disabled" id="reasoning-btn" onclick="toggleReasoning()">
+                    <i class="fas fa-lightbulb"></i> Reasoning
+                </button>
+                <button class="nav-btn btn-submit" onclick="submitTest()">
+                    Submit <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="results-page" class="page">
+            <div class="results-header-buttons">
+                <a id="website-link" href="#" target="_blank" class="btn btn-primary"><i class="fas fa-globe"></i> Website</a>
+                <a id="whatsapp-contact-link" href="#" target="_blank" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> Whatsapp Contact</a>
+                <a id="whatsapp-community-link" href="#" target="_blank" class="btn btn-whatsapp"><i class="fas fa-users"></i> Whatsapp Community</a>
+            </div>
+            
+            <div class="quick-stats">
+                <div class="stat-card correct">
+                    <div class="stat-value" id="correct-count">0</div>
+                    <div class="stat-label">Correct</div>
+                </div>
+                <div class="stat-card incorrect">
+                    <div class="stat-value" id="incorrect-count">0</div>
+                    <div class="stat-label">Incorrect</div>
+                </div>
+                <div class="stat-card unanswered">
+                    <div class="stat-value" id="unanswered-count">0</div>
+                    <div class="stat-label">Unanswered</div>
+                </div>
+            </div>
+            
+            <div class="performance-meter">
+                <div class="performance-fill" id="performance-fill"></div>
+            </div>
+            
+            <div class="result-card">
+                <h2><i class="fas fa-user-graduate"></i> Student Information</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Field</th>
+                            <th>Detail</th>
+                        </tr>
+                    </thead>
+                    <tbody id="student-info-table"></tbody>
+                </table>
+            </div>
+
+            <div class="result-card">
+                <h2><i class="fas fa-chart-bar"></i> Test Results</h2>
+                <table>
+                    <tbody id="quiz-results-table"></tbody>
+                </table>
+            </div>
+            
+            <div class="result-actions">
+                <button class="btn btn-primary" onclick="restartTest()">
+                    <i class="fas fa-redo"></i> Retake Full Test
+                </button>
+                <button class="btn btn-primary" onclick="retakeIncorrect()">
+                    <i class="fas fa-bolt"></i> Retake Incorrect Questions
+                </button>
+                <button class="btn btn-primary" onclick="viewAllMcqs()">
+                    <i class="fas fa-clipboard-list"></i> View All MCQs
+                </button>
+            </div>
+        </div>
+
+        <div id="all-mcqs-page" class="page">
+            <h2><i class="fas fa-list-alt"></i> All MCQs and Solutions</h2>
+            <div class="all-mcqs-list" id="all-mcqs-list"></div>
+            <button class="btn btn-primary" onclick="showPage('results-page')">
+                <i class="fas fa-arrow-left"></i> Back to Results
+            </button>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html><script>// ***************************************************************
+// !! IMPORTANT: GOOGLE APPS SCRIPT URL FOR DATA LOGGING !!
+const SHEET_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw2N316gzPWvSV7_59Mjx49idXLH8Sc7S_S0nHhvGjYxhhGjTm8UBnsRB4VGgeuluL0/exec';
+// ***************************************************************
+
+// Quiz Data
+const quizData_WCW_PHY_08_9 = [
+    {
+        question: "Q: The primary function of radioactive isotopes when employed as tracers in medical diagnostics is to provide information regarding what aspect of bodily processes?",
+        options: [
+            "A) The exact chemical composition of all body fluids.",
+            "B) Detailed insights into the functional performance and structural arrangements within the body.",
+            "C) The absolute mass of specific organs and tissues.",
+            "D) The precise electrical conductivity across various cellular membranes."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory states that radioactive isotopes are utilized as 'tracers' to provide insights into bodily functions and structures, which aligns with 'functional performance and structural arrangements'."
+    },
+    {
+        question: "Q: When radioactive isotopes are prepared for diagnostic use, they are incorporated into specific chemical forms primarily to ensure what specific biological characteristic?",
+        options: [
+            "A) Their rapid and complete elimination from the body.",
+            "B) Uniform dispersion throughout the entire circulatory system.",
+            "C) Preferential concentration within designated organs or tissues.",
+            "D) Enhanced stability against any form of radioactive decay."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory states that isotopes are introduced in specific chemical forms designed to have an affinity for particular organs, allowing them to concentrate there. This means preferential concentration in designated areas."
+    },
+    {
+        question: "Q: Considering the mechanism of PET, what specific subatomic particle, derived from the injected isotope, undergoes interaction to initiate the emission of detectable gamma rays?",
+        options: [
+            "A) A neutron, immediately after its emission from the nucleus.",
+            "B) A positron, upon encountering an electron.",
+            "C) A proton, as it exits the decaying atom.",
+            "D) An alpha particle, during its energy loss in tissue."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory states that in PET, a positron-emitting isotope decays, emitting a positron which annihilates with an electron, producing two gamma rays. Thus, the positron is the subatomic particle initiating the gamma ray emission through annihilation."
+    },
+    {
+        question: "Q: A medical diagnostic procedure aims to capture images over an extended period (e.g., several hours) to observe slow biological processes. Which general characteristic of a radionuclide's half-life would be most advantageous for maintaining a consistent, detectable signal throughout this duration?",
+        options: [
+            "A) An extremely short half-life to minimize patient exposure after the scan.",
+            "B) A half-life that is significantly shorter than the total observation period.",
+            "C) A half-life that is comparable to or moderately longer than the observation period.",
+            "D) An instantaneous decay rate upon administration."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory describes half-lives for PET isotopes ranging from 2 minutes to 110 minutes. For 'sustained observation over several hours,' a half-life that allows for a detectable signal over that period is crucial. An extremely short or significantly shorter half-life would mean the signal diminishes too quickly. Therefore, a half-life comparable to or moderately longer than the observation period ensures a consistent signal for the required duration."
+    },
+    {
+        question: "Q: If a research scenario involved modifying a gamma-ray camera to detect beta particles instead of gamma radiations, what fundamental change would be required in the tracer's emission properties for effective diagnostic imaging?",
+        options: [
+            "A) The tracer would need to emit only alpha particles for improved tissue penetration.",
+            "B) The tracer would need to be a positron emitter that produces beta particles directly, rather than through annihilation.",
+            "C) The tracer would need to be specifically a beta-minus emitter, rather than a gamma or positron emitter.",
+            "D) The tracer would require an extremely long half-life to compensate for reduced detection efficiency."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory states that gamma-ray cameras observe gamma radiations. If the camera were modified to detect beta particles, the tracer itself would need to emit beta particles directly. The term 'beta particle' generally refers to beta-minus decay in this context, where electrons are emitted. Positron emission in PET leads to gamma rays, not directly detectable beta particles."
+    },
+    {
+        question: "Q: The 'm' in Technetium-99m primarily signifies which specific nuclear state of the isotope?",
+        options: [
+            "A) A state of minimal radioactivity, safe for pediatric use.",
+            "B) A short-lived, transient energy state.",
+            "C) A long-lived excited nuclear state.",
+            "D) A state characterized by immediate spontaneous fission."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory explicitly states that the 'm' in Technetium-99m stands for 'metastable' state, indicating a long-lived excited state."
+    },
+    {
+        question: "Q: For effective image reconstruction in Positron Emission Tomography (PET), the detectors surrounding the patient are configured to primarily identify what specific characteristic of the gamma rays produced?",
+        options: [
+            "A) Their precise individual energy levels, independent of spatial orientation.",
+            "B) Their simultaneous arrival in pairs at opposing detectors.",
+            "C) Their unique chemical signatures correlating with metabolic activity.",
+            "D) Their random and uncorrelated emission patterns from multiple sources."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory states that in PET, positron-electron annihilation produces two gamma rays traveling in opposite directions. The detection method involves a 'ring of detectors' and 'detecting the coincident gamma rays' to determine the location. This emphasizes simultaneous arrival in pairs at opposing detectors."
+    },
+    {
+        question: "Q: Which of the following medical applications relies on the principle of damaging cellular genetic material to disrupt cell proliferation?",
+        options: [
+            "A) Tracers used for bone imaging.",
+            "B) Positron Emission Tomography (PET) for metabolic mapping.",
+            "C) Radiation therapy for cancer treatment.",
+            "D) Gamma-ray camera detection of concentrated isotopes."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory states that Radiation therapy involves the use of high-energy radiation directed to damage the DNA of cancer cells, with the goal of destroying their ability to divide and grow. Damaging genetic material (DNA) to disrupt cell proliferation (divide and grow) is the core mechanism."
+    },
+    {
+        question: "Q: Imagine a diagnostic scenario where a patient's metabolic activity in a specific organ needs to be monitored continuously and dynamically over a very short time frame, perhaps only a few minutes. Which general characteristic of the tracer isotope would be most critically important for this purpose?",
+        options: [
+            "A) A very long half-life to ensure persistent availability.",
+            "B) Extremely high gamma-ray energy for deep tissue penetration.",
+            "C) A remarkably short half-life to allow for rapid, sequential measurements without significant residual activity.",
+            "D) Its inertness, preventing any chemical interaction within the body."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory lists PET isotopes with very short half-lives (e.g., Oxygen-15 with 2 minutes). For 'continuous and dynamic monitoring over a very short time frame' and 'rapid, sequential measurements,' a very short half-life is ideal because it allows the activity to quickly clear, enabling repeat scans or minimizing dose accumulation over short intervals. This requires inferring the advantage of short half-life beyond just production practicality."
+    },
+    {
+        question: "Q: The production of short-lived positron-emitting isotopes, such as Oxygen-15, Nitrogen-13, Carbon-11, and Fluorine-18, relies on the use of what specialized scientific equipment?",
+        options: [
+            "A) A standard laboratory centrifuge.",
+            "B) An advanced electron microscope.",
+            "C) A cyclotron.",
+            "D) A conventional X-ray generator."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory explicitly states that these short-lived isotopes (for PET) are typically produced using a cyclotron."
+    },
+    {
+        question: "Q: In the context of medical diagnostics, what is the primary role of the 'gamma-ray camera'?",
+        options: [
+            "A) To inject radioactive isotopes into the patient's bloodstream.",
+            "B) To observe gamma radiations emitted from concentrated isotopes and produce an image.",
+            "C) To synthesize new radioactive isotopes within the patient's body.",
+            "D) To therapeutically destroy cancer cells using focused radiation."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory states that a sensitive detector, known as a 'gamma-ray camera,' is used to observe the gamma radiations emitted from the concentrated isotopes within the target organ. This camera produces an image illustrating the radioactive activity distribution."
+    },
+    {
+        question: "Q: If a specific medical diagnostic technique aims to map the distribution of a radioisotope by determining the precise origin of each emitted photon within the patient, which of the following detection systems would be most appropriate?",
+        options: [
+            "A) A simple Geiger counter for total activity measurement.",
+            "B) A gamma-ray camera designed for spatial resolution.",
+            "C) An X-ray absorption imager for density mapping.",
+            "D) A magnetic resonance imager for soft tissue contrast."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory states that gamma-ray cameras are 'capable of precisely determining the origin of each gamma-ray photon within the patient' and produce an image showing the distribution of activity. This directly matches the description of the detection system."
+    },
+    {
+        question: "Q: Consider two PET isotopes, X with a half-life of 5 minutes and Y with a half-life of 50 minutes. If both are produced simultaneously with equal initial activity for separate diagnostic studies, how would their practical application timelines differ regarding imaging windows?",
+        options: [
+            "A) Isotope X would provide a longer imaging window due to its more gradual decay.",
+            "B) Isotope Y would necessitate more frequent production for sequential scans compared to X.",
+            "C) Isotope X would be better suited for dynamic studies requiring rapid data acquisition and clearance.",
+            "D) Isotope Y would lose its detectable signal more rapidly than isotope X."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory provides half-lives for PET isotopes. A shorter half-life (5 minutes for X) means the isotope decays faster, leading to a quicker signal decrease and faster clearance. This is advantageous for 'dynamic studies requiring rapid data acquisition and clearance' as it allows for quicker sequential scans or minimizes radiation burden over a short diagnostic period. A longer half-life (50 minutes for Y) would offer a more extended imaging window but less rapid clearance."
+    },
+    {
+        question: "Q: In radiation therapy, the 'high-energy radiation' primarily achieves its therapeutic effect by interacting with what specific cellular component?",
+        options: [
+            "A) The cell membrane, causing immediate lysis.",
+            "B) The cytoplasm, inhibiting protein synthesis.",
+            "C) The mitochondria, disrupting cellular energy production.",
+            "D) The DNA, impairing the cell's ability to divide."
+        ],
+        correctAnswer: 3,
+        reasoning: "The Book theory explicitly states that radiation therapy involves high-energy radiation directed to 'damage the DNA of cancer cells,' with the goal of destroying their ability to divide and grow. This means the primary interaction is with DNA, affecting cell division."
+    },
+    {
+        question: "Q: If a novel therapeutic agent were developed that could selectively inhibit the production of specific enzymes essential for DNA repair in cancer cells, how might this agent theoretically enhance the efficacy of conventional radiation therapy?",
+        options: [
+            "A) By making cancer cells more resistant to radiation-induced DNA damage.",
+            "B) By increasing the rate at which cancer cells can recover from radiation exposure.",
+            "C) By preventing cancer cells from effectively repairing the DNA damage inflicted by radiation.",
+            "D) By causing cancer cells to rapidly metabolize the radioactive isotopes used in therapy."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory states that radiation therapy damages the DNA of cancer cells. If a therapeutic agent inhibits DNA repair enzymes, it would prevent cancer cells from repairing this damage, thus 'enhancing the efficacy' of radiation therapy by making the DNA damage more permanent and lethal to the cancer cells."
+    },
+    {
+        question: "Q: What is the primary purpose of radiation therapy in a medical context?",
+        options: [
+            "A) To diagnose the precise location of internal organ abnormalities.",
+            "B) To provide detailed images of bone structures for orthopedic assessment.",
+            "C) To treat diseases, especially cancer, by destroying abnormal cell growth.",
+            "D) To monitor metabolic activity in the brain for neurological disorders."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory clearly defines Radiation therapy as a therapeutic application aimed at treating diseases, primarily cancer, by destroying cancer cells' ability to divide and grow."
+    },
+    {
+        question: "Q: The images produced by a gamma-ray camera directly illustrate what specific aspect of the patient's internal state?",
+        options: [
+            "A) The distribution of stable, non-radioactive chemical compounds.",
+            "B) The pattern of electrical impulses across nerve pathways.",
+            "C) How radioactive activity is dispersed throughout specific organs or the body.",
+            "D) The structural integrity of cellular organelles."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory states that a gamma-ray camera produces an image that 'illustrates how the radioactive activity is distributed throughout the patient's body.' This directly matches the concept of dispersion of radioactive activity."
+    },
+    {
+        question: "Q: Imagine a hypothetical scenario where the chemical forms of diagnostic tracers could not be designed to have an affinity for specific organs. What immediate and significant limitation would this impose on their diagnostic utility?",
+        options: [
+            "A) It would significantly enhance their ability to target all diseased tissues simultaneously.",
+            "B) It would prevent the localization of the isotope, making organ-specific imaging impossible.",
+            "C) It would only allow for imaging of very rapidly metabolizing organs.",
+            "D) It would increase the precision of determining the origin of emitted gamma-ray photons."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory states that chemical forms are 'designed to have an affinity for particular organs, allowing the isotopes to concentrate there.' If this affinity were absent, the isotopes would not concentrate, making it impossible to localize the activity to a specific organ for imaging."
+    },
+    {
+        question: "Q: The half-life of Fluorine-18 ($^{18}$F) is 110 minutes, while that of Oxygen-15 ($^{15}$O) is 2 minutes. If a PET scan requires the tracer to remain active for approximately 3-4 hours within the body for a complex, prolonged study, which isotope would be a more practical choice, and why?",
+        options: [
+            "A) Oxygen-15, because its rapid decay allows for quick repeat scans.",
+            "B) Fluorine-18, due to its significantly longer half-life providing a sufficient imaging window.",
+            "C) Both would be equally practical, as their half-lives are both considered short-lived.",
+            "D) Neither, as both are too short-lived for such an extended study duration."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory provides the half-lives: Fluorine-18 at 110 minutes (approx. 1 hour 50 minutes) and Oxygen-15 at 2 minutes. For a 'complex, prolonged study' requiring activity for 'approximately 3-4 hours,' Fluorine-18's longer half-life makes it significantly more practical than Oxygen-15, which would decay almost completely within minutes."
+    },
+    {
+        question: "Q: What unique characteristic of Technetium-99m makes it particularly well-suited for medical diagnostic imaging compared to isotopes that immediately decay from their ground state?",
+        options: [
+            "A) Its ability to emit only alpha particles, which have high ionization potential.",
+            "B) Its very long natural half-life, minimizing the need for immediate production.",
+            "C) Its metastable state, allowing for a controlled release of gamma photons without particulate radiation.",
+            "D) Its high affinity for all types of bone tissue, making it universally applicable."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory mentions Technetium-99m as 'metastable' and implies it's a common diagnostic radionuclide, detected by gamma-ray cameras. The 'metastable' state means it's an excited state with a measurable half-life, allowing it to be transported and administered. It primarily emits gamma rays, making it suitable for imaging with minimal particulate dose to the patient. This characteristic is a key advantage for medical imaging. The text doesn't explicitly state it avoids particulate radiation, but gamma cameras detect gamma rays, implying that's the primary useful emission."
+    },
+    {
+        question: "Q: The method of image reconstruction in PET relies on detecting coincident gamma rays to determine the precise location of decay. If the detectors were unable to accurately resolve the 'opposite directions' of the two gamma rays, what consequence would primarily arise?",
+        options: [
+            "A) The ability to determine the exact origin of the decay event would be severely compromised.",
+            "B) The total number of detected gamma rays would significantly increase.",
+            "C) The penetration depth of the gamma rays into the detectors would be reduced.",
+            "D) The overall energy of the annihilation event would change."
+        ],
+        correctAnswer: 0,
+        reasoning: "The Book theory states that in PET, annihilation produces two gamma rays 'traveling in opposite directions.' By 'detecting the coincident gamma rays, it is possible to determine the exact location where the decay (annihilation) occurred.' If the 'opposite directions' could not be resolved, the localization mechanism based on lines of response would fail, compromising the determination of the exact origin."
+    },
+    {
+        question: "Q: A physician is considering a diagnostic procedure to assess the current functional state of an organ, which involves injecting a tracer and then immediately imaging its distribution. The imaging session is expected to last about 30 minutes. Based on the provided information, which PET isotope would offer the most appropriate balance of signal duration and post-scan clearance?",
+        options: [
+            "A) Oxygen-15 ($t_{1/2}$ of 2 minutes).",
+            "B) Nitrogen-13 ($t_{1/2}$ of 10 minutes).",
+            "C) Carbon-11 ($t_{1/2}$ of 20 minutes).",
+            "D) Fluorine-18 ($t_{1/2}$ of 110 minutes)."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory provides half-lives for PET isotopes. For a 30-minute imaging session, an isotope that maintains significant activity throughout that period but also clears reasonably quickly afterward is ideal. Carbon-11 with a half-life of 20 minutes would still have substantial activity after 30 minutes (less than two half-lives) and clear within a reasonable timeframe post-scan. Oxygen-15 (2 min) would decay too quickly, and Fluorine-18 (110 min) would remain active for too long beyond the diagnostic window."
+    },
+    {
+        question: "Q: Which statement accurately describes a key distinction between medical diagnostic applications of radionuclides and radiation therapy?",
+        options: [
+            "A) Diagnostic uses primarily involve high-energy radiation to damage cells, while therapy uses tracers for imaging.",
+            "B) Diagnostic uses focus on providing information about bodily functions, whereas therapy aims to destroy specific cells.",
+            "C) Diagnostic applications typically involve positron emitters, while therapy exclusively uses gamma emitters.",
+            "D) Diagnostic procedures always require cyclotron-produced isotopes, but therapy does not."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory separates 'Medical Diagnostics' (tracers, insights into bodily functions) from 'Radiation Therapy' (treating diseases, damaging DNA of cancer cells). Therefore, diagnostics provide information, while therapy aims to destroy cells."
+    },
+    {
+        question: "Q: If a hypothetical medical diagnostic tracer was developed that accumulated uniformly in all bodily tissues regardless of chemical form, what would be the practical limitation for obtaining specific organ images?",
+        options: [
+            "A) It would lead to excessively high localized radiation doses.",
+            "B) The specific activity in any single organ would be too low for detection.",
+            "C) Differentiating between organs or structures based on tracer concentration would be impossible.",
+            "D) Its short half-life would prevent adequate imaging time."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory states that tracers are in specific chemical forms to have 'affinity for particular organs' and 'concentrate there.' If a tracer accumulated uniformly everywhere, there would be no differential concentration, making it impossible to distinguish one organ from another based on the tracer's distribution for imaging purposes."
+    },
+    {
+        question: "Q: Why are PET isotopes typically produced using a cyclotron, rather than being obtained from long-term storage or natural sources?",
+        options: [
+            "A) Cyclotrons are the only devices capable of separating stable isotopes from radioactive ones.",
+            "B) PET isotopes have extremely long half-lives, requiring specialized high-energy production methods.",
+            "C) Their short half-lives necessitate on-site or nearby production due to rapid decay.",
+            "D) Cyclotrons are primarily used to activate stable isotopes into inert forms for safe disposal."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory lists PET isotopes with very short half-lives (e.g., 2 minutes to 110 minutes) and states they are 'typically produced using a cyclotron.' The short half-lives imply that they decay quickly, making long-term storage impractical and requiring production close to the point of use, hence the need for devices like cyclotrons."
+    },
+    {
+        question: "Q: In radiation therapy, the ultimate objective of damaging cancer cell DNA is to prevent what specific cellular process?",
+        options: [
+            "A) The absorption of essential nutrients from the bloodstream.",
+            "B) The synthesis of structural proteins for cell maintenance.",
+            "C) The ability of the cells to divide and proliferate.",
+            "D) The effective elimination of cellular waste products."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory states that radiation therapy damages the DNA of cancer cells to 'destroy cancer cells' ability to divide and grow, thereby inhibiting tumor progression.' This directly corresponds to preventing cell division and proliferation."
+    },
+    {
+        question: "Q: If a PET scan setup were modified such that the emitted gamma rays were absorbed by the tissue before reaching the external detectors, what would be the most immediate and significant consequence for image formation?",
+        options: [
+            "A) The image would appear sharper due to reduced background noise.",
+            "B) The detected signal would be too weak or absent, preventing image reconstruction.",
+            "C) The resolution of the resulting image would dramatically improve.",
+            "D) The spatial localization of decay events would become more accurate."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory states that in PET, gamma rays are produced and detected by a 'ring of detectors' surrounding the patient. If these gamma rays were absorbed before reaching the detectors, the necessary signals for image reconstruction would not be available, leading to a weak or absent image."
+    },
+    {
+        question: "Q: Why is Technetium-99m denoted with an 'm' in its symbol?",
+        options: [
+            "A) It refers to its magnetic properties, crucial for MRI compatibility.",
+            "B) It signifies its origin from a medical cyclotron production.",
+            "C) It indicates its metastable, long-lived excited state.",
+            "D) It represents its minimal radioactive emission for patient safety."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory explicitly states that 'The 'm' in the symbol stands for 'metastable' state, indicating a long-lived excited state.'"
+    },
+    {
+        question: "Q: Imagine a future diagnostic technique that uses short-lived positron emitters, but instead of detecting gamma rays, it directly detects the positrons themselves before annihilation. What major piece of information, crucial for current PET imaging, would be lost or become difficult to determine with this hypothetical approach?",
+        options: [
+            "A) The exact metabolic pathway the isotope is following in the body.",
+            "B) The precise location of the decay event within the patient.",
+            "C) The total administered dose of the radioisotope.",
+            "D) The half-life of the administered isotope."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory states that in PET, it is the 'annihilation' of the positron with an electron that produces two gamma rays in opposite directions, and by detecting these 'coincident gamma rays,' it is possible to 'determine the exact location where the decay (annihilation) occurred.' If positrons were detected directly before annihilation, the unique 'opposite direction' coincidence signal used for localization would be absent, making precise event localization much harder or impossible with the described PET method."
+    },
+    {
+        question: "Q: Which of the following is an example of a radionuclide used in Positron Emission Tomography (PET)?",
+        options: [
+            "A) Technetium-99m.",
+            "B) Uranium-238.",
+            "C) Oxygen-15.",
+            "D) Iodine-131."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory lists $^{15}$O (Oxygen-15) as one of the isotopes used in PET, along with Nitrogen-13, Carbon-11, and Fluorine-18."
+    },
+    {
+        question: "Q: If a diagnostic procedure using Technetium-99m requires imaging the thyroid gland, what specific property must the chemical form of the administered Technetium compound possess?",
+        options: [
+            "A) It must be entirely inert and non-reactive in the body.",
+            "B) It must specifically bind to red blood cells for systemic circulation.",
+            "C) It must have an inherent affinity for thyroid tissue.",
+            "D) It must instantly disintegrate upon contact with any organ."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory states that isotopes are introduced in 'specific chemical forms' designed to have an 'affinity for particular organs (e.g., bone, thyroid gland),' allowing them to concentrate there. Therefore, for thyroid imaging, the compound must have an affinity for thyroid tissue."
+    },
+    {
+        question: "Q: A significant advantage of radiation therapy, as described, is its direct impact on which fundamental characteristic of cancer cells?",
+        options: [
+            "A) Their ability to absorb nutrients from their surroundings.",
+            "B) Their uncontrolled and rapid proliferative capacity.",
+            "C) Their structural integrity, leading to immediate cellular rupture.",
+            "D) Their energy production mechanisms, causing immediate metabolic collapse."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory states that radiation therapy 'damages the DNA of cancer cells' to 'destroy cancer cells' ability to divide and grow, thereby inhibiting tumor progression.' The ability to divide and grow is the proliferative capacity."
+    },
+    {
+        question: "Q: What type of detector is utilized in PET imaging to capture the signals necessary for image reconstruction?",
+        options: [
+            "A) A single, centrally located photomultiplier tube.",
+            "B) A ring-shaped arrangement of sensitive radiation detectors.",
+            "C) A specialized ultrasound transducer array.",
+            "D) A highly focused X-ray emitter and receiver pair."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory states that in PET, 'The patient is surrounded by a ring of detectors' to detect the coincident gamma rays."
+    },
+    {
+        question: "Q: If a new isotope was discovered that emitted only alpha particles, and it was proposed for diagnostic imaging using a gamma-ray camera, what would be the primary practical challenge or limitation?",
+        options: [
+            "A) Alpha particles would significantly enhance the image resolution due to their higher energy.",
+            "B) Gamma-ray cameras are specifically designed to detect gamma radiation, not alpha particles, making detection ineffective.",
+            "C) Alpha particles would penetrate deep into tissue, making superficial imaging easier.",
+            "D) The half-life of such an isotope would invariably be too long for diagnostic use."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory describes a 'gamma-ray camera' as a 'sensitive detector...used to observe the gamma radiations.' It is designed for gamma rays. If an isotope emitted only alpha particles, the gamma-ray camera would not be able to detect them effectively, making it unsuitable for this purpose."
+    },
+    {
+        question: "Q: Positron Emission Tomography (PET) is classified as which type of medical application?",
+        options: [
+            "A) A primary surgical intervention technique.",
+            "B) A therapeutic treatment modality for chronic pain.",
+            "C) An advanced diagnostic technique providing internal body information.",
+            "D) A method for directly stimulating nerve regeneration."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory explicitly states, 'PET is another advanced diagnostic technique that reveals detailed information from inside the body.'"
+    },
+    {
+        question: "Q: The primary goal of radiation therapy is to achieve what outcome in the context of cancer treatment?",
+        options: [
+            "A) To stimulate rapid growth of healthy cells surrounding a tumor.",
+            "B) To entirely prevent the initial formation of any cancerous cells.",
+            "C) To inhibit tumor progression by destroying cancer cells' ability to divide and grow.",
+            "D) To reduce inflammation and alleviate pain in cancerous areas without affecting cells."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory states that the 'ultimate goal is to destroy cancer cells' ability to divide and grow, thereby inhibiting tumor progression.' This directly aligns with inhibiting tumor progression by targeting cell division."
+    },
+    {
+        question: "Q: Considering the detection mechanism of a gamma-ray camera, what kind of radiation is it specifically designed to register and map?",
+        options: [
+            "A) Only high-energy beta-minus particles.",
+            "B) Emitted gamma radiations from within the patient.",
+            "C) Reflected ultrasonic waves from tissue interfaces.",
+            "D) Low-frequency electromagnetic waves from cellular activity."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory states that a 'gamma-ray camera' is used to 'observe the gamma radiations emitted from the concentrated isotopes.' This clearly indicates its specificity for gamma radiation."
+    },
+    {
+        question: "Q: How does the phenomenon of 'annihilation' contribute to the localization of decay events in PET imaging?",
+        options: [
+            "A) By directly providing the metabolic information of the tissue.",
+            "B) By producing two gamma rays traveling in precisely opposite directions, enabling precise geometric triangulation.",
+            "C) By generating an electrical pulse that directly indicates the isotope's chemical identity.",
+            "D) By causing a temporary increase in local tissue temperature, detectable by thermal sensors."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory states that in PET, 'a positron, which annihilates with an electron, producing two gamma rays traveling in opposite directions.' It further states that 'By detecting the coincident gamma rays, it is possible to determine the exact location where the decay (annihilation) occurred.' The key is the production of two gamma rays in opposite directions for localization."
+    },
+    {
+        question: "Q: A hypothetical tracer is developed that has a very short half-life but emits only very low-energy gamma rays. How would this characteristic likely impact its utility for deep-tissue diagnostic imaging using a standard gamma-ray camera?",
+        options: [
+            "A) The very short half-life would make it ideal for prolonged deep-tissue studies.",
+            "B) The low-energy gamma rays would likely be absorbed by overlying tissues, hindering detection from deep structures.",
+            "C) Low-energy gamma rays are preferred for deep-tissue imaging as they penetrate more effectively.",
+            "D) The imaging would be significantly faster due to the low energy emissions."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory describes gamma-ray cameras detecting gamma radiations from concentrated isotopes. While it doesn't explicitly discuss energy-dependent penetration, general physics principles, inferable at an undergraduate level, suggest that lower energy radiation is more likely to be attenuated (absorbed) by intervening tissue. Thus, low-energy gamma rays would be hindered in reaching the detector from deep tissues."
+    },
+    {
+        question: "Q: For a diagnostic procedure using a radionuclide, a very short half-life would generally require which logistical consideration for its practical medical application?",
+        options: [
+            "A) The ability to store large quantities of the radionuclide for extended periods.",
+            "B) On-site or nearby production facilities for immediate use after synthesis.",
+            "C) The development of specialized chemical forms that enhance its stability indefinitely.",
+            "D) Reduced need for precise timing between production and administration."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory mentions that PET isotopes have very short half-lives (e.g., 2 to 110 minutes) and are 'typically produced using a cyclotron.' This implies that their rapid decay (short half-life) necessitates production close to or at the point of use to ensure sufficient activity remains for diagnostic purposes, hence 'on-site or nearby production facilities for immediate use'."
+    },
+    {
+        question: "Q: What is the defining characteristic of a 'metastable' state in an isotope like Technetium-99m?",
+        options: [
+            "A) It instantly decays to its ground state upon formation.",
+            "B) It represents a stable, non-radioactive isotope configuration.",
+            "C) It is an excited nuclear state with a measurable, relatively long lifetime before decaying.",
+            "D) It possesses an exceptionally high binding energy per nucleon."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory states that the 'm' in Technetium-99m stands for 'metastable' state, indicating a long-lived excited state. This defines a state that is excited but has a measurable, non-instantaneous decay time."
+    },
+    {
+        question: "Q: In PET, the reconstruction of an image mapping the radioisotope's distribution within the patient relies on accumulating what kind of data?",
+        options: [
+            "A) Measurements of overall patient body temperature fluctuations.",
+            "B) A large quantity of precisely localized decay events.",
+            "C) Direct chemical analysis of cellular metabolites.",
+            "D) Patterns of naturally occurring electromagnetic fields in the body."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory states that in PET, 'From a large number of such detected events' (referring to determined exact locations of decay), 'an image is reconstructed that maps the distribution of the radioisotope within the patient's body.' This directly implies accumulation of precisely localized decay events."
+    },
+    {
+        question: "Q: The half-life of Carbon-11 is 20 minutes. If a PET procedure requires that the initial activity of a Carbon-11 tracer be maintained at a level no lower than 25% of its starting value for optimal imaging, approximately how long after initial production could imaging ideally commence?",
+        options: [
+            "A) Approximately 5 minutes.",
+            "B) Approximately 20 minutes.",
+            "C) Approximately 40 minutes.",
+            "D) Approximately 60 minutes."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory provides Carbon-11's half-life as 20 minutes. If 25% of the initial activity is the threshold, this corresponds to two half-lives (100% -> 50% after 1st half-life; 50% -> 25% after 2nd half-life). Therefore, the imaging could ideally commence for up to approximately 2 * 20 minutes = 40 minutes after production to ensure at least 25% activity remains. This is an inter-relation based question on half-life, requiring multi-step thinking."
+    },
+    {
+        question: "Q: Why are 'high-energy radiation' doses carefully controlled and directed in radiation therapy?",
+        options: [
+            "A) To ensure uniform distribution throughout the entire body for general health benefits.",
+            "B) To minimize the damage to healthy surrounding tissues while targeting cancer cells.",
+            "C) To enhance the natural regeneration of cancerous cells after treatment.",
+            "D) To convert cancer cells into beneficial, hormone-producing cells."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory states that radiation therapy involves 'high-energy radiation' directed to 'damage the DNA of cancer cells.' Implicit in 'directed' therapy, especially when treating cancer, is the critical need to protect healthy tissue from the damaging effects of radiation. Thus, careful control and direction minimize damage to healthy surrounding tissues."
+    },
+    {
+        question: "Q: If a positron-emitting isotope in a PET scan decayed without annihilating with an electron, what specific characteristic necessary for image reconstruction would not be generated?",
+        options: [
+            "A) The chemical affinity for specific organs.",
+            "B) The production of two gamma rays traveling in opposite directions.",
+            "C) The short half-life of the isotope.",
+            "D) The ability to be produced by a cyclotron."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory states that in PET, 'When the positron-emitting isotope decays, it emits a positron, which annihilates with an electron, producing two gamma rays traveling in opposite directions.' This specific production of two opposing gamma rays is crucial for localization and image reconstruction. Without annihilation, these characteristic gamma rays would not be generated."
+    },
+    {
+        question: "Q: The specificity of diagnostic tracers for particular organs is primarily determined by what property?",
+        options: [
+            "A) The physical temperature of the administered isotope.",
+            "B) The total administered radioactive dose.",
+            "C) The chemical form in which the isotope is introduced.",
+            "D) The ambient humidity of the diagnostic environment."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory states that 'Isotopes are introduced into the body in specific chemical forms. These chemical forms are designed to have an affinity for particular organs...allowing the isotopes to concentrate there.' This clearly indicates that the chemical form determines organ specificity."
+    },
+    {
+        question: "Q: Which specific group of isotopes is identified as typically being produced by a cyclotron for medical use?",
+        options: [
+            "A) Long-lived beta-minus emitters used in therapeutic applications.",
+            "B) Stable isotopes for non-radioactive imaging techniques.",
+            "C) Short-lived positron-emitting isotopes used in PET.",
+            "D) Alpha-emitting isotopes for targeted alpha therapy."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory states that the 'short-lived isotopes' used in PET (Oxygen-15, Nitrogen-13, Carbon-11, Fluorine-18) 'are typically produced using a cyclotron.' This directly identifies the type of isotopes produced by a cyclotron."
+    },
+    {
+        question: "Q: Consider the use of a gamma-ray camera. If a technician observed unusually diffuse and unfocused images, suggesting poor spatial resolution, what aspect of the camera's function might be compromised, based on its described capabilities?",
+        options: [
+            "A) Its ability to synthesize new gamma-emitting tracers within the patient.",
+            "B) Its capability to precisely determine the origin of each gamma-ray photon.",
+            "C) Its rate of gamma radiation absorption by the detector material.",
+            "D) Its influence on the half-life of the administered radionuclide."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory states that gamma-ray cameras are 'capable of precisely determining the origin of each gamma-ray photon within the patient' and use this to produce an image of activity distribution. If images are diffuse or unfocused (poor spatial resolution), it directly implies a compromise in the camera's ability to precisely determine the origin of the photons."
+    },
+    {
+        question: "Q: A significant advancement in medical diagnostics that maps radioisotope distribution by detecting coincident gamma rays from annihilation events is known as what technique?",
+        options: [
+            "A) Magnetic Resonance Imaging (MRI).",
+            "B) Positron Emission Tomography (PET).",
+            "C) Computed Tomography (CT).",
+            "D) Electrocardiography (ECG)."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory clearly describes Positron Emission Tomography (PET) as involving positron-emitting isotopes, annihilation producing two gamma rays traveling in opposite directions, and detection of coincident gamma rays to map distribution."
+    },
+    {
+        question: "Q: The mechanism of Positron Emission Tomography (PET) fundamentally relies on the interaction between a positron and which other subatomic particle?",
+        options: [
+            "A) A proton from the atomic nucleus.",
+            "B) A neutron within the cell nucleus.",
+            "C) An electron from surrounding tissue.",
+            "D) A neutrino emitted during decay."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory states that in PET, 'a positron, which annihilates with an electron,' which directly identifies the interacting particle as an electron."
+    },
+    {
+        question: "Q: If a novel cancer treatment aimed to prevent tumor progression by exclusively enhancing the DNA repair mechanisms within cancer cells, how would this approach contrast with the principle of radiation therapy as described?",
+        options: [
+            "A) It would align perfectly with radiation therapy by boosting its DNA-damaging effects.",
+            "B) It would directly counteract the goal of radiation therapy, which is to damage DNA and inhibit repair.",
+            "C) It would be irrelevant to radiation therapy, as radiation primarily affects cell membranes.",
+            "D) It would be a synergistic approach, making cancer cells more susceptible to radiation."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory states that radiation therapy aims to 'damage the DNA of cancer cells' and 'destroy cancer cells' ability to divide and grow.' If a treatment 'enhanced the DNA repair mechanisms within cancer cells,' it would directly work against the DNA-damaging principle of radiation therapy, making the cancer cells more resilient to the therapy's effects."
+    },
+    {
+        question: "Q: What is the defining characteristic of a 'tracer' radionuclide in medical diagnostics?",
+        options: [
+            "A) Its ability to emit strong X-rays for structural imaging.",
+            "B) Its use to provide insights into bodily functions and structures.",
+            "C) Its primary role in directly destroying abnormal cells.",
+            "D) Its capacity to produce audible signals upon decay."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory states that 'Radioactive isotopes are utilized as 'tracers' to provide insights into bodily functions and structures.' This is the general principle and defining characteristic."
+    },
+    {
+        question: "Q: Consider a situation where a gamma-ray camera malfunctions and cannot precisely determine the origin of gamma-ray photons. What direct consequence would this have on the image generated?",
+        options: [
+            "A) The image would appear with sharper contrast between tissues.",
+            "B) The reconstructed image would lack accurate spatial distribution of activity.",
+            "C) The total radioactive dose administered to the patient would increase.",
+            "D) The chemical forms of the tracers would become universally distributed."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory states that gamma-ray cameras are 'capable of precisely determining the origin of each gamma-ray photon' and use this to produce an image illustrating how 'radioactive activity is distributed.' If the origin cannot be determined precisely, the spatial distribution in the image will be inaccurate."
+    },
+    {
+        question: "Q: Fluorine-18 ($^{18}$F) has a half-life of 110 minutes, making it one of the longer-lived PET isotopes. What logistical advantage does this relatively longer half-life offer for certain PET diagnostic procedures, compared to much shorter-lived isotopes?",
+        options: [
+            "A) It allows for extremely rapid, sequential imaging of dynamic processes.",
+            "B) It enables the production facility to be located further from the imaging site.",
+            "C) It necessitates more frequent cyclotron production due to rapid decay.",
+            "D) It ensures immediate clearance of all radioactivity after a short scan."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory lists Fluorine-18 with a half-life of 110 minutes, which is significantly longer than Oxygen-15 (2 min) or Carbon-11 (20 min). A longer half-life means the isotope decays less rapidly, allowing it to be transported over greater distances or stored for a slightly longer time after production before administration, making the production facility potentially 'located further from the imaging site' without losing too much activity. This is an indirect inference based on the practicality of half-life duration."
+    },
+    {
+        question: "Q: Which statement best describes the fundamental principle underpinning the use of radioactive isotopes in medical diagnosis?",
+        options: [
+            "A) Their ability to generate strong magnetic fields for tissue alignment.",
+            "B) Their emission of detectable radiation, allowing tracking of their distribution and concentration.",
+            "C) Their capacity to directly stimulate cellular repair mechanisms.",
+            "D) Their chemical inertness, preventing any interaction with biological processes."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory establishes that 'Radioactive isotopes are utilized as 'tracers'' and mentions 'observing the gamma radiations emitted from the concentrated isotopes' to produce an image. This implies that their emission of detectable radiation is the fundamental principle for tracking and diagnosis."
+    },
+    {
+        question: "Q: If a PET isotope were engineered to decay without emitting a positron but instead emitted a high-energy electron directly, what core mechanism for gamma ray production in PET would be circumvented?",
+        options: [
+            "A) The specific organ affinity of the chemical form.",
+            "B) The process of positron-electron annihilation.",
+            "C) The production method using a cyclotron.",
+            "D) The short half-life requirement for the isotope."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory states that in PET, 'the positron-emitting isotope decays, it emits a positron, which annihilates with an electron, producing two gamma rays.' If it emitted an electron directly instead of a positron, the 'positron-electron annihilation' process, which is the source of the detectable gamma rays, would not occur."
+    },
+    {
+        question: "Q: The term 'metastable' for Technetium-99m implies a specific characteristic that allows for its utility as a diagnostic tracer. What is this characteristic in relation to its decay?",
+        options: [
+            "A) It decays instantly after administration, limiting exposure.",
+            "B) It decays directly to a stable, non-radioactive state.",
+            "C) It exists in an excited state for a sufficient period to be administered and imaged before decaying, often by gamma emission.",
+            "D) It requires external stimulation to initiate its decay process."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory states 'The 'm' in the symbol stands for 'metastable' state, indicating a long-lived excited state.' This means it remains in an excited state for a measurable duration, long enough for medical application, before decaying and emitting detectable radiation (gamma rays, as detected by a gamma-ray camera)."
+    },
+    {
+        question: "Q: How do the short half-lives of PET isotopes, such as Oxygen-15 (2 min), impact the radiation dose received by the patient over a prolonged period compared to very long-lived isotopes?",
+        options: [
+            "A) Short half-lives lead to a significantly higher cumulative radiation dose due to rapid decay.",
+            "B) Short half-lives contribute to a lower total radiation dose over time because the activity quickly diminishes.",
+            "C) Half-life duration has no significant impact on the total radiation dose received by the patient.",
+            "D) Short half-lives result in longer-lasting residual radioactivity within the body."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory highlights the short half-lives of PET isotopes. A shorter half-life means the radioactive material decays more quickly and is eliminated faster from the body. This rapid decay leads to a lower 'total radiation dose over time' to the patient, as the source of radiation diminishes rapidly."
+    },
+    {
+        question: "Q: If the technology for producing positron-emitting isotopes in a cyclotron became severely limited, what widespread consequence would this have on clinical PET applications?",
+        options: [
+            "A) PET imaging would shift to exclusively using naturally occurring, long-lived isotopes.",
+            "B) The availability of current PET tracers would be drastically reduced, impacting diagnostic capabilities.",
+            "C) Alternative diagnostic methods, like gamma-ray camera imaging, would become obsolete.",
+            "D) Radiation therapy techniques would become more reliant on positron emitters."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory states that 'These short-lived isotopes' (for PET) 'are typically produced using a cyclotron.' If cyclotron production was limited, the supply of these essential PET tracers would be severely constrained, directly impacting 'the availability of current PET tracers' and thus 'diagnostic capabilities'."
+    },
+    {
+        question: "Q: The specific detection of 'two gamma rays traveling in opposite directions' in PET is crucial for what primary imaging outcome?",
+        options: [
+            "A) Reducing the overall patient exposure to radiation.",
+            "B) Enhancing the chemical purity of the administered tracer.",
+            "C) Pinpointing the precise spatial location of the decay event.",
+            "D) Accelerating the metabolic uptake of the isotope by target organs."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory states that in PET, 'a positron...annihilates with an electron, producing two gamma rays traveling in opposite directions.' It then explains that 'By detecting the coincident gamma rays, it is possible to determine the exact location where the decay (annihilation) occurred.' This means pinpointing the precise spatial location."
+    },
+    {
+        question: "Q: What is the general principle behind utilizing radioactive isotopes as 'tracers' in medical diagnostics?",
+        options: [
+            "A) To induce therapeutic effects by altering cellular structure.",
+            "B) To provide visual insights into the body's functional processes and structures.",
+            "C) To actively remove harmful substances from the bloodstream.",
+            "D) To directly measure the electrical potential of nerve cells."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory states: 'Radioactive isotopes are utilized as 'tracers' to provide insights into bodily functions and structures.' This directly matches the provided option."
+    },
+    {
+        question: "Q: A medical facility aims to expand its diagnostic capabilities by implementing PET. A key requirement would be access to what specific type of equipment for isotope generation?",
+        options: [
+            "A) An advanced electron microscope for cellular imaging.",
+            "B) A magnetic resonance imaging scanner for anatomical details.",
+            "C) A cyclotron for producing short-lived positron emitters.",
+            "D) A high-power X-ray tube for deep tissue penetration."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory states that the short-lived isotopes used in PET 'are typically produced using a cyclotron.' Therefore, for implementing PET, access to a cyclotron for isotope generation is a key requirement."
+    },
+    {
+        question: "Q: What type of radiation does a 'gamma-ray camera' primarily detect?",
+        options: [
+            "A) Alpha particles.",
+            "B) Beta particles.",
+            "C) Gamma radiations.",
+            "D) X-rays."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory explicitly states that a 'gamma-ray camera' is used to 'observe the gamma radiations emitted from the concentrated isotopes.'"
+    },
+    {
+        question: "Q: The destructive effect of high-energy radiation on cancer cells in therapy primarily targets their ability to perform which vital biological function?",
+        options: [
+            "A) Nutrient absorption.",
+            "B) Waste excretion.",
+            "C) Replication.",
+            "D) Cellular respiration."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory states that radiation therapy 'damages the DNA of cancer cells' to 'destroy cancer cells' ability to divide and grow.' The ability to divide and grow is synonymous with replication."
+    },
+    {
+        question: "Q: A key advantage of using Technetium-99m in diagnostics is its emission characteristics. What type of radiation does it primarily allow a gamma-ray camera to detect?",
+        options: [
+            "A) Alpha radiation, for high cellular damage.",
+            "B) Beta-minus radiation, for deep tissue penetration.",
+            "C) Gamma radiation, enabling external detection and imaging.",
+            "D) Positron emission, for subsequent annihilation."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory mentions Technetium-99m as a common radionuclide and states that a 'gamma-ray camera' is used to 'observe the gamma radiations emitted' from concentrated isotopes. This implies Technetium-99m's primary detectable emission for this purpose is gamma radiation."
+    },
+    {
+        question: "Q: Which specific physical phenomenon is central to the image formation process in Positron Emission Tomography (PET)?",
+        options: [
+            "A) Nuclear fusion of light elements.",
+            "B) The annihilation of a positron and an electron.",
+            "C) The reflection of ultrasonic waves off tissue boundaries.",
+            "D) The absorption of X-rays by dense structures."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory explicitly states that in PET, 'When the positron-emitting isotope decays, it emits a positron, which annihilates with an electron, producing two gamma rays.' This annihilation event is fundamental to the PET imaging mechanism."
+    },
+    {
+        question: "Q: How do radioactive tracers assist in medical diagnostics by providing 'insights into bodily functions'?",
+        options: [
+            "A) They directly measure the electrical activity of muscles.",
+            "B) They become part of metabolic pathways, allowing visualization of biological processes.",
+            "C) They chemically modify enzymes to enhance their activity.",
+            "D) They absorb all external radiation, shielding internal organs."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory states that tracers are 'introduced into the body in specific chemical forms' and have 'affinity for particular organs,' allowing 'insights into bodily functions.' This implies they participate in or highlight biological processes, allowing visualization of how these functions occur."
+    },
+    {
+        question: "Q: Imagine a scenario where radiation therapy caused no DNA damage in cancer cells. What would be the most immediate and critical failure of this therapeutic approach?",
+        options: [
+            "A) Cancer cells would develop increased sensitivity to subsequent treatments.",
+            "B) The therapeutic goal of inhibiting tumor progression would not be met.",
+            "C) The treated area would experience significantly reduced inflammation.",
+            "D) The requirement for high-energy radiation would be eliminated."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory clearly states that radiation therapy involves 'high-energy radiation' directed to 'damage the DNA of cancer cells' with the 'ultimate goal...to destroy cancer cells' ability to divide and grow, thereby inhibiting tumor progression.' If no DNA damage occurred, this core mechanism would fail, and the therapeutic goal of inhibiting tumor progression would not be met."
+    },
+    {
+        question: "Q: What kind of image does a 'gamma-ray camera' produce?",
+        options: [
+            "A) A detailed structural image of bones and dense tissues.",
+            "B) An image illustrating how radioactive activity is distributed within the patient.",
+            "C) A real-time video feed of blood flow in major arteries.",
+            "D) A microscopic view of individual cellular organelles."
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory states that a gamma-ray camera 'produces an image that illustrates how the radioactive activity is distributed throughout the patient's body.' This directly matches the option."
+    },
+    {
+        question: "Q: If a PET scan aims to monitor a very rapid biochemical process that concludes within minutes, which of the listed isotopes would be the most physiologically suitable choice?",
+        options: [
+            "A) Fluorine-18 ($t_{1/2}$ of 110 minutes).",
+            "B) Carbon-11 ($t_{1/2}$ of 20 minutes).",
+            "C) Oxygen-15 ($t_{1/2}$ of 2 minutes).",
+            "D) Nitrogen-13 ($t_{1/2}$ of 10 minutes)."
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory lists Oxygen-15 with a half-life of 2 minutes. For a 'very rapid biochemical process that concludes within minutes,' an isotope with an extremely short half-life like Oxygen-15 is ideal because it allows for quick observation and rapid clearance, enabling the capture of fast processes without prolonged interference or high residual activity."
+    }
+];
+
+// Constants
+const QUIZ_ACCESS_CODE = "PreMium-A-12345";
+const DEV_ACCESS_CODE = "Dev-PDA-001";
+const ACADEMY_NAME = "WHITE COAT WORRIORS ";
+const QUIZ_SUBJECT = "Physics ";
+const WEBSITE_LINK = "https://premiumdoctoracademy.com";
+const WHATSAPP_CONTACT = "03287743851";
+const WHATSAPP_COMMUNITY = "https://whatsapp.com/channel/0029VaFCIU6EquiOlXWcNR1X";
+const TIME_PER_MCQ = 60;
+const MARK_PER_MCQ = 1;
+const NEGATIVE_MARKING = 0;
+
+// Global state variables
+let currentQuizId = 'WCW-PHY-08-9';
+let quizData = quizData_WCW_PHY_08_9;
+let currentQuestion = 0;
+let userAnswers = Array(quizData.length).fill(null);
+let timeLeft;
+let questionTimeLeft;
+let totalTimeInterval;
+let questionTimeInterval;
+let studentData = {};
+let studentAccessCode = "";
+
+// DOM elements
+const questionNavEl = document.getElementById('question-nav');
+const questionTextEl = document.getElementById('question-text');
+const optionsContainerEl = document.getElementById('options-container');
+const reasoningEl = document.getElementById('reasoning');
+const reasoningTextEl = document.getElementById('reasoning-text');
+const quizTitleEl = document.getElementById('quiz-title');
+const quizSubjectEl = document.getElementById('quiz-subject');
+const perMcqTimeEl = document.getElementById('per-mcq-time');
+const totalTimerEl = document.getElementById('timer');
+const questionTimerEl = document.getElementById('question-timer');
+const quizProgressEl = document.getElementById('quiz-progress');
+const studentInfoTable = document.getElementById('student-info-table');
+const quizResultsTable = document.getElementById('quiz-results-table');
+const allMcqsList = document.getElementById('all-mcqs-list');
+const devPasswordInput = document.getElementById('developerPassword');
+const devErrorBox = document.getElementById('dev-error-box');
+const quizAccessCodeInput = document.getElementById('quizAccessCode');
+const quizAccessErrorBox = document.getElementById('quiz-error-box');
+const toggleDevPasswordIcon = document.getElementById('toggleDeveloperPassword');
+const toggleQuizCodeIcon = document.getElementById('toggleQuizAccessCode');
+const websiteLinkEl = document.getElementById('website-link');
+const whatsappContactLinkEl = document.getElementById('whatsapp-contact-link');
+const whatsappCommunityLinkEl = document.getElementById('whatsapp-community-link');
+const reasoningBtn = document.getElementById('reasoning-btn');
+const quizNotificationEl = document.getElementById('quiz-notification');
+const notificationTitleEl = document.getElementById('notification-title');
+const notificationMessageEl = document.getElementById('notification-message');
+const notificationYesBtn = document.getElementById('notification-yes');
+const notificationNoBtn = document.getElementById('notification-no');
+const correctCountEl = document.getElementById('correct-count');
+const incorrectCountEl = document.getElementById('incorrect-count');
+const unansweredCountEl = document.getElementById('unanswered-count');
+const performanceFillEl = document.getElementById('performance-fill');
+
+
+/**
+ * @description Sends data to the Google Apps Script endpoint.
+ * @param {object} data - The payload containing type ('registration' or 'quiz_result') and data.
+ */
+function sendDataToSheet(data) {
+    if (!SHEET_SCRIPT_URL || SHEET_SCRIPT_URL.includes('YOUR_DEPLOYED_WEB_APP_URL')) {
+        console.error('SHEET_SCRIPT_URL is not configured. Data not sent to Google Sheet.');
+        return Promise.resolve({ success: false, message: 'Script URL not configured.' });
+    }
+
+    return fetch(SHEET_SCRIPT_URL, {
+        method: 'POST',
+        // 'no-cors' is necessary for Apps Script to accept cross-origin POST requests from a web page
+        mode: 'no-cors',
+        cache: 'no-cache',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => {
+        // Cannot read response body with 'no-cors', assume request was sent successfully
+        return { success: true, message: 'Request sent to Google Script.' };
+    })
+    .catch(error => {
+        console.error('Sheet Data Send Error:', error);
+        return { success: false, message: 'Failed to send request to Google Script.' };
+    });
+}
+
+
+// Initialization
+document.addEventListener('DOMContentLoaded', () => {
+    const storedStudentData = localStorage.getItem('studentData');
+    if (storedStudentData) {
+        studentData = JSON.parse(storedStudentData);
+        document.getElementById('studentName').value = studentData['Student Name'] || '';
+        document.getElementById('fatherName').value = studentData['Father Name'] || '';
+        document.getElementById('email').value = studentData['Email'] || '';
+        document.getElementById('mobile').value = studentData['Mobile'] || '';
+        document.getElementById('city').value = studentData['City'] || '';
+    }
+    const storedCode = localStorage.getItem('studentAccessCode');
+    if (storedCode) {
+        studentAccessCode = storedCode;
+    }
+    
+    showPage('signin-page');
+    
+    if (toggleDevPasswordIcon) toggleDevPasswordIcon.addEventListener('click', () => togglePasswordVisibility('developerPassword', 'toggleDeveloperPassword'));
+    if (toggleQuizCodeIcon) toggleQuizCodeIcon.addEventListener('click', () => togglePasswordVisibility('quizAccessCode', 'toggleQuizAccessCode'));
+});
+
+function showQuizNotification(title, message, type = 'info') {
+    const allowedNotifications = ['Registration Successful', 'Access Granted', 
+                                 'Quiz Completed!', 'Quiz Reset', 'Registration Error', 'Submission Error', 'Registration Warning'];
+    
+    if (!allowedNotifications.includes(title)) {
+        return;
+    }
+    
+    notificationTitleEl.textContent = title;
+    notificationMessageEl.textContent = message;
+    
+    quizNotificationEl.classList.remove('warning', 'error');
+    
+    if (type === 'warning') {
+        quizNotificationEl.classList.add('warning');
+    } else if (type === 'error') {
+        quizNotificationEl.classList.add('error');
+    }
+    
+    quizNotificationEl.classList.add('show');
+    
+    setTimeout(() => {
+        if (quizNotificationEl.classList.contains('show')) {
+            hideQuizNotification();
+        }
+    }, 5000);
+}
+
+function hideQuizNotification() {
+    quizNotificationEl.classList.remove('show');
+}
+
+function showPage(pageId) {
+    const pages = document.querySelectorAll('.page');
+    pages.forEach(page => page.classList.remove('active'));
+    document.getElementById(pageId).classList.add('active');
+    document.querySelectorAll('.error-box, .success-box').forEach(el => el.style.display = 'none');
+}
+
+function togglePasswordVisibility(inputID, iconID) {
+    const passwordInput = document.getElementById(inputID);
+    const toggleIcon = document.getElementById(iconID);
+    
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        toggleIcon.classList.remove('fa-eye-slash');
+        toggleIcon.classList.add('fa-eye');
+    } else {
+        passwordInput.type = 'password';
+        toggleIcon.classList.remove('fa-eye');
+        toggleIcon.classList.add('fa-eye-slash');
+    }
+}
+
+function showQuizAccessForm() {
+    document.getElementById('quiz-access-form').style.display = 'flex';
+    document.getElementById('developer-access-form').style.display = 'none';
+}
+
+function showDeveloperAccessForm() {
+    document.getElementById('developer-access-form').style.display = 'flex';
+    document.getElementById('quiz-access-form').style.display = 'none';
+}
+
+function showRegistrationPage() {
+    showPage('registration-page');
+}
+
+// Registration Handler
+function generateAccessCode(studentName, fatherName) {
+    const studentInitials = studentName.split(' ').map(n => n[0]).join('').toUpperCase();
+    const fatherInitials = fatherName.split(' ').map(n => n[0]).join('').toUpperCase();
+    const uniqueId = Math.random().toString(36).substring(2, 7).toUpperCase();
+
+    return `${ACADEMY_NAME.replace(/\s+/g, '-')}-${studentInitials}${fatherInitials}-${uniqueId}`;
+}
+
+function handleRegistration() {
+    const sName = document.getElementById('studentName').value.trim();
+    const fName = document.getElementById('fatherName').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const mobile = document.getElementById('mobile').value.trim();
+    const city = document.getElementById('city').value.trim();
+    
+    if (!sName || !fName || !email || !mobile || !city) {
+        showQuizNotification('Registration Error', 'Please fill in all the registration details.', 'error');
+        return;
+    }
+    
+    // Generate access code
+    const generatedCode = generateAccessCode(sName, fName);
+    studentAccessCode = generatedCode;
+
+    studentData = {
+        'Student Name': sName,
+        'Father Name': fName,
+        'Email': email,
+        'Mobile': mobile,
+        'City': city
+    };
+
+    // --- NEW: SEND REGISTRATION DATA TO GOOGLE SHEET ---
+    const registrationDataToSend = {
+        type: 'registration',
+        accessCode: generatedCode,
+        studentName: sName,
+        fatherName: fName,
+        email: email,
+        mobile: mobile,
+        city: city
+    };
+    
+    sendDataToSheet(registrationDataToSend)
+        .then(response => {
+            console.log('Sheet Registration Response:', response);
+            showQuizNotification('Registration Successful', `Your code: ${generatedCode}. Data submitted to sheet.`, 'info');
+        })
+        .catch(error => {
+            console.error('Sheet Registration Error:', error);
+            showQuizNotification('Registration Warning', `Registration saved locally, but sheet submission failed.`, 'warning');
+        });
+    // ----------------------------------------------------
+    
+    // Store data locally
+    localStorage.setItem('studentAccessCode', generatedCode);
+    localStorage.setItem('studentData', JSON.stringify(studentData));
+    
+    const registrations = JSON.parse(localStorage.getItem('wcwRegistrations') || '[]');
+    registrations.push({
+        ...studentData,
+        accessCode: generatedCode,
+        timestamp: new Date().toISOString()
+    });
+    localStorage.setItem('wcwRegistrations', JSON.stringify(registrations));
+    
+    
+    // Start the quiz after registration
+    startQuiz('WCW-PHY-08-9', 'Student', generatedCode);
+}
+
+// Quiz Access Handler
+function checkDeveloperPassword() {
+    devErrorBox.style.display = 'none';
+    if (devPasswordInput.value === DEV_ACCESS_CODE) {
+        showQuizNotification('Access Granted', 'Welcome! You have successfully logged in as a developer.', 'info');
+        startQuiz('WCW-PHY-08-9', 'Developer', DEV_ACCESS_CODE);
+    } else {
+        devErrorBox.style.display = 'block';
+    }
+}
+
+function accessQuiz(inputCode) {
+    const errorBox = document.getElementById('quiz-error-box');
+    errorBox.style.display = 'none';
+    
+    const storedStudentCode = localStorage.getItem('studentAccessCode');
+    
+    if (inputCode === QUIZ_ACCESS_CODE || inputCode === DEV_ACCESS_CODE || inputCode === storedStudentCode) {
+        showQuizNotification('Access Granted', 'Welcome! You can now start the quiz.', 'info');
+        startQuiz('WCW-PHY-08-9', 'Student', inputCode);
+    } else {
+        errorBox.style.display = 'block';
+    }
+}
+
+function startQuiz(quizId, userType, code) {
+    currentQuizId = quizId;
+    quizData = quizData_WCW_PHY_08_9;
+    
+    // Always start fresh - no progress restoration
+    currentQuestion = 0;
+    userAnswers = Array(quizData.length).fill(null);
+    
+    timeLeft = quizData.length * TIME_PER_MCQ;
+    questionTimeLeft = TIME_PER_MCQ;
+    
+    localStorage.setItem('lastAccessCode', code);
+
+    showPage('quiz-page');
+    initQuiz();
+}
+
+// Quiz Logic
+function initQuiz() {
+    quizSubjectEl.textContent = QUIZ_SUBJECT;
+    perMcqTimeEl.textContent = Math.floor(TIME_PER_MCQ / 60);
+    
+    websiteLinkEl.href = WEBSITE_LINK;
+    whatsappContactLinkEl.href = 'https://wa.me/' + WHATSAPP_CONTACT;
+    whatsappCommunityLinkEl.href = WHATSAPP_COMMUNITY;
+    
+    quizTitleEl.textContent = `Test - ID: ${currentQuizId}`;
+    renderQuestionNav();
+    renderQuestion();
+
+    if (totalTimeInterval) clearInterval(totalTimeInterval);
+    if (questionTimeInterval) clearInterval(questionTimeInterval);
+    
+    totalTimeInterval = setInterval(updateTotalTimer, 1000);
+    questionTimeInterval = setInterval(updateQuestionTimer, 1000);
+}
+
+function updateTotalTimer() {
+    if (timeLeft > 0) {
+        timeLeft--;
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+        totalTimerEl.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+    } else {
+        clearInterval(totalTimeInterval);
+        submitTest(true);
+    }
+}
+
+function updateQuestionTimer() {
+    if (questionTimeLeft > 0) {
+        questionTimeLeft--;
+        questionTimerEl.textContent = `${questionTimeLeft}`;
+    } else {
+        questionTimeLeft = TIME_PER_MCQ;
+        navigateQuestion('next');
+    }
+}
+
+function renderQuestionNav() {
+    questionNavEl.innerHTML = '';
+    quizData.forEach((_, index) => {
+        const navItem = document.createElement('div');
+        navItem.classList.add('question-nav-item');
+        navItem.textContent = index + 1;
+        navItem.onclick = () => navigateQuestion(index);
+        
+        if (index === currentQuestion) {
+            navItem.classList.add('current');
+        } else if (userAnswers[index] !== null) {
+            navItem.classList.add('solved');
+        } else if (userAnswers.slice(0, index).some(ans => ans !== null) || index < currentQuestion) {
+             navItem.classList.add('visited');
+        }
+        
+        questionNavEl.appendChild(navItem);
+    });
+    updateProgressBar();
+}
+
+function updateProgressBar() {
+    const solvedCount = userAnswers.filter(answer => answer !== null).length;
+    const progress = (solvedCount / quizData.length) * 100;
+    quizProgressEl.style.width = `${progress}%`;
+}
+
+function renderQuestion() {
+    reasoningEl.style.display = 'none';
+    reasoningBtn.classList.add('disabled');
+    const question = quizData[currentQuestion];
+    questionTextEl.textContent = `${currentQuestion + 1}. ${question.question}`;
+    
+    optionsContainerEl.innerHTML = '';
+    question.options.forEach((option, index) => {
+        const optionEl = document.createElement('div');
+        optionEl.classList.add('option');
+        optionEl.textContent = option;
+        
+        const isAnswered = userAnswers[currentQuestion] !== null;
+
+        if (!isAnswered) {
+            optionEl.onclick = () => selectOption(index);
+        } else {
+            if (index === question.correctAnswer) {
+                optionEl.classList.add('correct');
+            } else if (index === userAnswers[currentQuestion]) {
+                optionEl.classList.add('incorrect');
+            }
+        }
+        
+        if (userAnswers[currentQuestion] === index) {
+            optionEl.classList.add('selected');
+        }
+
+        optionsContainerEl.appendChild(optionEl);
+    });
+    
+    questionTimeLeft = TIME_PER_MCQ;
+    questionTimerEl.textContent = `${questionTimeLeft}`;
+    renderQuestionNav();
+    
+    if (userAnswers[currentQuestion] !== null) {
+        reasoningBtn.classList.remove('disabled');
+    }
+}
+
+function selectOption(optionIndex) {
+    const question = quizData[currentQuestion];
+    userAnswers[currentQuestion] = optionIndex;
+    
+    reasoningBtn.classList.remove('disabled');
+    
+    const options = optionsContainerEl.querySelectorAll('.option');
+    options.forEach((option, index) => {
+        option.onclick = null;
+        option.classList.remove('selected', 'correct', 'incorrect');
+        
+        if (index === question.correctAnswer) {
+            option.classList.add('correct');
+        } else if (index === optionIndex) {
+            option.classList.add('incorrect');
+        }
+        
+        if (index === optionIndex) {
+             option.classList.add('selected');
+        }
+    });
+
+    renderQuestionNav();
+    
+    setTimeout(() => {
+        navigateQuestion('next');
+    }, 800);
+}
+
+function navigateQuestion(direction) {
+    const totalQuestions = quizData.length;
+    let nextIndex;
+
+    if (typeof direction === 'number') {
+        nextIndex = direction;
+    } else if (direction === 'next') {
+        nextIndex = (currentQuestion + 1) % totalQuestions;
+    } else if (direction === 'prev') {
+        nextIndex = (currentQuestion - 1 + totalQuestions) % totalQuestions;
+    } else {
+        return;
+    }
+
+    if (nextIndex === currentQuestion) return;
+    
+    currentQuestion = nextIndex;
+    renderQuestion();
+}
+
+function toggleReasoning() {
+    if (reasoningBtn.classList.contains('disabled')) return;
+    
+    const question = quizData[currentQuestion];
+    if (reasoningEl.style.display === 'block') {
+        reasoningEl.style.display = 'none';
+    } else {
+        reasoningTextEl.textContent = question.reasoning;
+        reasoningEl.style.display = 'block';
+    }
+}
+
+function submitTest(isTimeout = false) {
+    if (!isTimeout && !confirm('Are you sure you want to submit the quiz?')) {
+        return;
+    }
+    
+    clearInterval(totalTimeInterval);
+    clearInterval(questionTimeInterval);
+
+    let correct = 0;
+    let incorrect = 0;
+    let unanswered = 0;
+
+    quizData.forEach((question, index) => {
+        if (userAnswers[index] === null) {
+            unanswered++;
+        } else if (userAnswers[index] === question.correctAnswer) {
+            correct++;
+        } else {
+            incorrect++;
+        }
+    });
+
+    const totalQuestions = quizData.length;
+    const totalScore = (correct * MARK_PER_MCQ) - (incorrect * NEGATIVE_MARKING);
+    const totalMarks = totalQuestions * MARK_PER_MCQ;
+
+    correctCountEl.textContent = correct;
+    incorrectCountEl.textContent = incorrect;
+    unansweredCountEl.textContent = unanswered;
+    
+    const performancePercentage = (correct / totalQuestions) * 100;
+    performanceFillEl.style.width = `${performancePercentage}%`;
+
+    const savedStudentData = JSON.parse(localStorage.getItem('studentData') || '{}');
+    const lastAccessCode = localStorage.getItem('lastAccessCode') || 'N/A';
+    
+    let studentInfoHtml = '';
+    for (const [key, value] of Object.entries(savedStudentData)) {
+        studentInfoHtml += `<tr><td>${key}</td><td>${value}</td></tr>`;
+    }
+    studentInfoHtml += `<tr><td>Access Code Used</td><td>${lastAccessCode}</td></tr>`;
+    studentInfoTable.innerHTML = studentInfoHtml;
+
+    quizResultsTable.innerHTML = `
+        <tr><td>Quiz ID</td><td>${currentQuizId}</td></tr>
+        <tr><td>Total Questions</td><td>${totalQuestions}</td></tr>
+        <tr><td>Correct Answers</td><td>${correct}</td></tr>
+        <tr><td>Incorrect Answers</td><td>${incorrect}</td></tr>
+        <tr><td>Unanswered</td><td>${unanswered}</td></tr>
+        <tr><td>Your Score</td><td>${totalScore} / ${totalMarks}</td></tr>
+    `;
+
+    // --- NEW: SEND QUIZ RESULTS TO GOOGLE SHEET ---
+    if (lastAccessCode && lastAccessCode !== 'N/A') {
+        const resultsDataToSend = {
+            type: 'quiz_result',
+            accessCode: lastAccessCode,
+            quizId: currentQuizId,
+            totalQuestions: totalQuestions,
+            correct: correct,
+            incorrect: incorrect,
+            unanswered: unanswered,
+            totalScore: totalScore,
+            totalMarks: totalMarks,
+            studentName: savedStudentData['Student Name'] || 'Unknown' 
+        };
+
+        sendDataToSheet(resultsDataToSend)
+            .then(response => {
+                console.log('Sheet Results Update Response:', response);
+            })
+            .catch(error => {
+                console.error('Sheet Results Update Error:', error);
+                showQuizNotification('Submission Error', 'Failed to send results to the server sheet.', 'error');
+            });
+    }
+    // ----------------------------------------------------
+
+
+    const results = JSON.parse(localStorage.getItem('wcwQuizResults') || '[]');
+    results.push({
+        studentName: savedStudentData['Student Name'] || 'Unknown',
+        accessCode: lastAccessCode,
+        quizId: currentQuizId,
+        totalQuestions: totalQuestions,
+        correct: correct,
+        incorrect: incorrect,
+        unanswered: unanswered,
+        totalScore: totalScore,
+        totalMarks: totalMarks,
+        timestamp: new Date().toISOString()
+    });
+    localStorage.setItem('wcwQuizResults', JSON.stringify(results));
+    
+    showQuizNotification('Quiz Completed!', `Your score: ${totalScore}/${totalMarks}. Check the results page for details.`, 'info');
+    
+    showPage('results-page');
+}
+
+function restartTest() {
+    if (confirm('Are you sure you want to retake the full test? Your current progress will be lost.')) {
+        quizData = quizData_WCW_PHY_08_9;
+        currentQuestion = 0;
+        userAnswers = Array(quizData.length).fill(null);
+        timeLeft = quizData.length * TIME_PER_MCQ;
+        
+        showPage('quiz-page');
+        initQuiz();
+    }
+}
+
+function retakeIncorrect() {
+    const incorrectIndices = quizData.map((question, index) => {
+        const isIncorrect = userAnswers[index] !== null && 
+                            userAnswers[index] !== question.correctAnswer;
+        return isIncorrect ? index : -1;
+    }).filter(index => index !== -1);
+    
+    if (incorrectIndices.length === 0) {
+        showQuizNotification('No Incorrect Questions', 'You have no incorrect questions to retake!', 'info');
+        return;
+    }
+    
+    quizData = incorrectIndices.map(index => quizData_WCW_PHY_08_9[index]);
+    currentQuestion = 0;
+    userAnswers = Array(quizData.length).fill(null);
+    timeLeft = quizData.length * TIME_PER_MCQ;
+    
+    showPage('quiz-page');
+    initQuiz();
+}
+
+function viewAllMcqs() {
+    allMcqsList.innerHTML = '';
+    quizData_WCW_PHY_08_9.forEach((question, index) => {
+        const mcqItem = document.createElement('div');
+        mcqItem.classList.add('all-mcq-item');
+        mcqItem.innerHTML = `
+            <div class="question-text">${index + 1}. ${question.question}</div>
+            <div class="all-mcq-options">
+                ${question.options.map((option, optIndex) => `
+                    <div class="all-mcq-option ${optIndex === question.correctAnswer ? 'correct' : ''}">
+                        ${option}
+                    </div>
+                `).join('')}
+            </div>
+            <div class="all-mcq-reasoning">
+                <strong>Reasoning:</strong> ${question.reasoning}
+            </div>
+        `;
+        allMcqsList.appendChild(mcqItem);
+    });
+    showPage('all-mcqs-page');
+}</script>
