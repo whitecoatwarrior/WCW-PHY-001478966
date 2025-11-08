@@ -1,0 +1,2289 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><meta name='viewport' content='width=device-width, initial-scale=1'/><meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WHITE COAT WARRIORS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* All CSS styles remain the same as in the original file */
+        :root {
+            --primary-blue: #1a56db;
+            --secondary-blue: #0ea5e9;
+            --dark-blue: #1e3a8a;
+            --light-blue: #dbeafe;
+            --accent-green: #10b981;
+            --accent-orange: #f59e0b;
+            --accent-red: #ef4444;
+            --accent-purple: #8b5cf6;
+            --accent-pink: #ec4899;
+            --accent-teal: #14b8a6;
+            --accent-yellow: #fbbf24;
+            --accent-amber: #f59e0b;
+            --vibrant-blue: #3b82f6;
+            --vibrant-green: #22c55e;
+            --vibrant-purple: #a855f7;
+            --vibrant-pink: #e879f9;
+            --gradient-blue: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            --gradient-green: linear-gradient(135deg, var(--accent-green), #34d399);
+            --gradient-orange: linear-gradient(135deg, var(--accent-orange), #f97316);
+            --gradient-red: linear-gradient(135deg, var(--accent-red), #f87171);
+            --gradient-purple: linear-gradient(135deg, var(--accent-purple), #a78bfa);
+            --gradient-pink: linear-gradient(135deg, var(--accent-pink), #f472b6);
+            --gradient-teal: linear-gradient(135deg, var(--accent-teal), #2dd4bf);
+            --gradient-yellow: linear-gradient(135deg, var(--accent-yellow), #f59e0b);
+            --gradient-vibrant: linear-gradient(135deg, #4f46e5, #7c3aed, #ec4899);
+            --shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 2px 5px rgba(0, 0, 0, 0.08);
+            --shadow-xl: 0 5px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 6px;
+            color: #1e3a8a;
+            font-size: 8.25px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 9px;
+        }
+
+        .logo h1 {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--dark-blue);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.08);
+            margin-bottom: 1.5px;
+            background: var(--gradient-vibrant);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .logo p {
+            color: var(--primary-blue);
+            font-weight: 600;
+            font-size: 0.525rem;
+        }
+
+        .page {
+            background: white;
+            border-radius: 9px;
+            padding: 9px;
+            box-shadow: var(--shadow-xl);
+            width: 100%;
+            display: none;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+            backdrop-filter: blur(10px);
+        }
+
+        .active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .promo-banner {
+            background: var(--gradient-vibrant);
+            color: white;
+            padding: 11.25px;
+            border-radius: 7.5px;
+            margin-bottom: 11.25px;
+            text-align: center;
+            font-size: 0.45rem;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .promo-banner::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+            z-index: 1;
+        }
+
+        .promo-banner h2 {
+            font-size: 0.675rem;
+            margin-bottom: 6px;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 2;
+        }
+
+        .promo-banner p {
+            line-height: 1.4;
+            text-align: justify;
+            position: relative;
+            z-index: 2;
+        }
+
+        .form-group {
+            margin-bottom: 6px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 1.5px;
+            font-weight: 600;
+            color: var(--dark-blue);
+            font-size: 0.525rem;
+        }
+
+        .form-input, .form-select {
+            width: 100%;
+            padding: 4.5px 6.75px;
+            border: 1.5px solid var(--light-blue);
+            border-radius: 3.75px;
+            font-size: 0.525rem;
+            background: #f8fafc;
+            transition: all 0.2s;
+        }
+
+        .form-input:focus, .form-select:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 2px rgba(26, 86, 219, 0.15);
+        }
+
+        .input-container {
+            position: relative;
+        }
+
+        .password-container .form-input {
+            padding-right: 22.5px;
+        }
+
+        .input-icon {
+            position: absolute;
+            right: 7.5px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary-blue);
+            font-size: 0.525rem;
+            cursor: pointer;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4.5px 7.5px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.525rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            gap: 3px;
+            width: 100%;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: var(--gradient-blue);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(26, 86, 219, 0.2);
+        }
+
+        .btn-contact {
+            background: var(--gradient-green);
+            color: white;
+        }
+
+        .btn-contact:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(16, 185, 129, 0.2);
+        }
+
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            color: white;
+        }
+
+        .btn-whatsapp:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(37, 211, 102, 0.2);
+        }
+
+        .btn-purple {
+            background: var(--gradient-purple);
+            color: white;
+        }
+
+        .btn-purple:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(139, 92, 246, 0.2);
+        }
+
+        .btn-red {
+            background: var(--gradient-red);
+            color: white;
+        }
+
+        .btn-red:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(239, 68, 68, 0.2);
+        }
+
+        .btn-orange {
+            background: var(--gradient-orange);
+            color: white;
+        }
+
+        .btn-orange:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(245, 158, 11, 0.2);
+        }
+
+        .error-box {
+            background: #fee2e2;
+            color: var(--accent-red);
+            padding: 3.75px 5.25px;
+            border-radius: 2.25px;
+            margin-top: 4.5px;
+            display: none;
+            font-weight: 600;
+            font-size: 0.525rem;
+            border-left: 2.25px solid var(--accent-red);
+        }
+
+        .success-box {
+            background: #d1fae5;
+            color: var(--accent-green);
+            padding: 3.75px 5.25px;
+            border-radius: 2.25px;
+            margin-top: 4.5px;
+            display: none;
+            font-weight: 600;
+            font-size: 0.525rem;
+            border-left: 2.25px solid var(--accent-green);
+        }
+
+        .notification-box {
+            background: #fef3c7;
+            color: #d97706;
+            padding: 7.5px;
+            border-radius: 4.5px;
+            margin-top: 7.5px;
+            font-weight: 600;
+            font-size: 0.525rem;
+            text-align: center;
+            border-left: 3px solid #f59e0b;
+        }
+
+        .quiz-notification {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            background: white;
+            padding: 11.25px;
+            border-radius: 7.5px;
+            box-shadow: var(--shadow-xl);
+            z-index: 1000;
+            display: none;
+            max-width: 225px;
+            border-left: 3.75px solid var(--accent-green);
+            animation: slideInRight 0.3s ease;
+            transform: translateX(100%);
+        }
+
+        .quiz-notification.show {
+            display: block;
+            transform: translateX(0);
+        }
+
+        .quiz-notification.warning {
+            border-left-color: var(--accent-orange);
+        }
+
+        .quiz-notification.error {
+            border-left-color: var(--accent-red);
+        }
+
+        .quiz-notification-content {
+            display: flex;
+            flex-direction: column;
+            gap: 7.5px;
+        }
+
+        .quiz-notification-title {
+            font-weight: 700;
+            font-size: 0.6rem;
+            color: var(--dark-blue);
+        }
+
+        .quiz-notification-message {
+            font-size: 0.525rem;
+            color: #4b5563;
+        }
+
+        .quiz-notification-actions {
+            display: flex;
+            gap: 6px;
+            justify-content: flex-end;
+        }
+
+        .quiz-notification-btn {
+            padding: 3px 6px;
+            border-radius: 3px;
+            font-size: 0.4875rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+        }
+
+        .quiz-notification-btn.primary {
+            background: var(--gradient-blue);
+            color: white;
+        }
+
+        .quiz-notification-btn.secondary {
+            background: #f3f4f6;
+            color: #4b5563;
+        }
+
+        @keyframes slideInRight {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+
+        .main-page-buttons {
+            display: grid;
+            gap: 6px;
+            margin-top: 9px;
+        }
+
+        .quiz-access-section {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            margin-top: 9px;
+        }
+
+        .quiz-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 6px;
+            padding-bottom: 4.5px;
+            border-bottom: 1.5px solid var(--light-blue);
+        }
+
+        .quiz-title-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2.25px;
+            width: 80%;
+        }
+
+        .quiz-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+            font-size: 0.525rem;
+            color: var(--dark-blue);
+            font-weight: 600;
+        }
+
+        .timer-container {
+            display: flex;
+            gap: 4.5px;
+            justify-content: flex-end;
+            width: 100%;
+        }
+
+        .timer, .question-timer {
+            background: var(--gradient-blue);
+            color: white;
+            padding: 2.25px 4.5px;
+            border-radius: 7.5px;
+            font-weight: 700;
+            font-size: 0.525rem;
+            box-shadow: var(--shadow);
+            white-space: nowrap;
+        }
+
+        .timer.total-timer {
+            background: var(--gradient-orange);
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 4.5px;
+            background: #e5e7eb;
+            border-radius: 2.25px;
+            overflow: hidden;
+            margin-bottom: 6px;
+            box-shadow: var(--shadow);
+        }
+
+        .progress-bar {
+            height: 100%;
+            border-radius: 2.25px;
+            transition: width 0.4s ease;
+            background: var(--gradient-vibrant);
+        }
+
+        .question-nav {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(10.5px, 1fr));
+            gap: 2.25px;
+            margin-bottom: 6px;
+        }
+
+        .question-nav-item {
+            width: 10.5px;
+            height: 10.5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 2.25px;
+            font-weight: 700;
+            font-size: 0.375rem;
+            cursor: pointer;
+            background: white;
+            border: 1.5px solid var(--light-blue);
+            transition: all 0.2s;
+        }
+
+        .question-nav-item.current {
+            background: var(--gradient-vibrant);
+            color: white;
+            border-color: var(--primary-blue);
+            transform: scale(1.1);
+        }
+
+        .question-nav-item.solved {
+            background: var(--gradient-green);
+            color: white;
+            border-color: var(--accent-green);
+        }
+
+        .question-nav-item.visited {
+            background: var(--gradient-orange);
+            color: white;
+            border-color: var(--accent-orange);
+        }
+
+        .question-container {
+            margin-bottom: 6px;
+        }
+
+        .question-text {
+            font-size: 0.5625rem;
+            font-weight: 700;
+            margin-bottom: 4.5px;
+            color: var(--dark-blue);
+        }
+
+        .options-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3px;
+            margin-bottom: 6px;
+        }
+
+        .option {
+            padding: 3.75px 6px;
+            border: 1.5px solid var(--light-blue);
+            border-radius: 3.75px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 500;
+            background: #f8fafc;
+            font-size: 0.525rem;
+            position: relative;
+        }
+
+        .option:hover {
+            border-color: var(--primary-blue);
+            background: #e0f2fe;
+            transform: translateY(-1px);
+        }
+
+        .option.selected {
+            border-color: var(--primary-blue);
+            background: #dbeafe;
+        }
+
+        .option.correct {
+            border-color: var(--accent-green);
+            background: #d1fae5;
+        }
+
+        .option.incorrect {
+            border-color: var(--accent-red);
+            background: #fee2e2;
+        }
+
+        .option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .reasoning {
+            background: #f8fafc;
+            border-radius: 3.75px;
+            padding: 6px;
+            margin-top: 6px;
+            display: none;
+            border-left: 2.25px solid var(--primary-blue);
+            font-size: 0.525rem;
+        }
+
+        .reasoning-title {
+            font-weight: 700;
+            margin-bottom: 3px;
+            color: var(--dark-blue);
+            font-size: 0.5625rem;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            margin-top: 9px;
+        }
+
+        .nav-btn {
+            padding: 3.75px 5.25px;
+            border-radius: 3.75px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+            font-size: 0.525rem;
+            display: flex;
+            align-items: center;
+            gap: 2.25px;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .btn-back {
+            background: linear-gradient(135deg, #3b82f6, #60a5fa);
+            color: white;
+        }
+
+        .btn-next {
+            background: linear-gradient(135deg, #1d4ed8, #3b82f6);
+            color: white;
+        }
+
+        .btn-reasoning {
+            background: var(--gradient-purple);
+            color: white;
+        }
+
+        .btn-reasoning.disabled {
+            background: #dc3545;
+            color: white;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .btn-reasoning.disabled:hover {
+            background: #dc3545;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .btn-submit {
+            background: var(--gradient-green);
+            color: white;
+        }
+
+        .results-header-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 3.75px;
+            margin-bottom: 9px;
+        }
+
+        .results-header-buttons .btn {
+            padding: 3px 4.5px;
+            font-size: 0.4875rem;
+            width: 100%;
+        }
+
+        .result-card {
+            background: linear-gradient(135deg, #f8fafc, #e0f2fe);
+            border-radius: 6px;
+            padding: 9px;
+            text-align: center;
+            margin-bottom: 9px;
+            box-shadow: var(--shadow);
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .result-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-vibrant);
+        }
+
+        .result-card h2 {
+            font-size: 0.675rem;
+            margin-bottom: 6px;
+            color: var(--dark-blue);
+        }
+
+        .result-card table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.525rem;
+            margin-top: 6px;
+            box-shadow: var(--shadow);
+        }
+
+        .result-card th, .result-card td {
+            padding: 3.75px;
+            border: 1px solid #dbeafe;
+            text-align: left;
+        }
+
+        .result-card th {
+            background-color: var(--light-blue);
+            font-weight: 600;
+        }
+
+        .result-card td {
+            background-color: #f8fafc;
+        }
+
+        .result-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 4.5px;
+            margin-top: 9px;
+        }
+
+        .all-mcqs-list {
+            display: flex;
+            flex-direction: column;
+            gap: 11.25px;
+        }
+
+        .all-mcq-item {
+            padding: 7.5px;
+            border: 1px solid var(--light-blue);
+            border-radius: 6px;
+            background: #f8fafc;
+            position: relative;
+        }
+
+        .all-mcq-item .question-text {
+            color: var(--dark-blue);
+            font-size: 0.6rem;
+            font-weight: 700;
+        }
+
+        .all-mcq-options {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            margin-top: 4.5px;
+        }
+
+        .all-mcq-option {
+            font-size: 0.525rem;
+            padding: 3px 4.5px;
+            border-radius: 3px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .all-mcq-option.correct {
+            background: #d1fae5;
+            color: var(--accent-green);
+            font-weight: 600;
+            border-color: #a7f3d0;
+        }
+
+        .all-mcq-reasoning {
+            margin-top: 6px;
+            font-size: 0.525rem;
+            color: #4b5563;
+            padding: 6px;
+            background: #f8fafc;
+            border-radius: 3px;
+            border-left: 2.25px solid var(--primary-blue);
+        }
+
+        .all-mcq-reasoning strong {
+            color: var(--dark-blue);
+        }
+
+        .quick-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 9px;
+            gap: 6px;
+        }
+
+        .stat-card {
+            flex: 1;
+            background: white;
+            border-radius: 4.5px;
+            padding: 6px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border-top: 2px solid var(--primary-blue);
+        }
+
+        .stat-card.correct {
+            border-top-color: var(--accent-green);
+        }
+
+        .stat-card.incorrect {
+            border-top-color: var(--accent-red);
+        }
+
+        .stat-card.unanswered {
+            border-top-color: var(--accent-orange);
+        }
+
+        .stat-value {
+            font-size: 0.9rem;
+            font-weight: 800;
+            margin-bottom: 1.5px;
+        }
+
+        .stat-label {
+            font-size: 0.4875rem;
+            font-weight: 600;
+            color: #6b7280;
+        }
+
+        .performance-meter {
+            width: 100%;
+            height: 6px;
+            background: #e5e7eb;
+            border-radius: 3px;
+            overflow: hidden;
+            margin: 6px 0;
+        }
+
+        .performance-fill {
+            height: 100%;
+            border-radius: 3px;
+            transition: width 0.4s ease;
+            background: var(--gradient-vibrant);
+        }
+
+        @media (max-width: 768px) {
+            .quiz-header {
+                flex-direction: column;
+                gap: 4.5px;
+                align-items: flex-start;
+            }
+            
+            .navigation-buttons {
+                grid-template-columns: 1fr;
+            }
+            
+            .timer-container {
+                position: relative;
+                top: auto;
+                right: auto;
+                margin-top: 3.75px;
+                justify-content: flex-end;
+                width: 100%;
+            }
+            
+            .quiz-title-container {
+                width: 100%;
+            }
+            
+            .result-actions {
+                flex-direction: column;
+            }
+            
+            .promo-banner {
+                padding: 9px;
+            }
+            
+            .promo-banner h2 {
+                font-size: 0.6rem;
+            }
+            
+            .promo-banner p {
+                font-size: 0.4125rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-notification" id="quiz-notification">
+        <div class="quiz-notification-content">
+            <div class="quiz-notification-title" id="notification-title">Quiz Progress Found</div>
+            <div class="quiz-notification-message" id="notification-message">You have an unfinished quiz. Do you want to continue where you left off?</div>
+            <div class="quiz-notification-actions">
+                <button class="quiz-notification-btn secondary" id="notification-no">Start Fresh</button>
+                <button class="quiz-notification-btn primary" id="notification-yes">Continue</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="logo">
+            <h1>WHITE COAT WARRIORS</h1>
+            <p>Excellence in Educational Assessment</p>
+        </div>
+
+        <div id="signin-page" class="page active">
+            <div class="promo-banner">
+                <h2><i class="fas fa-graduation-cap"></i> Unlock Your Potential with WHITE COAT WARRIORS</h2>
+                <p>Boost your preparation with WHITE COAT WARRIORS's realistic online tests, crafted by experts to mirror the actual exam's pattern and challenge. Experience instant feedback, detailed analysis, and flexible online access – your pathway to confidence and success!</p>
+            </div>
+            
+            <h2><i class="fas fa-lock"></i> Access Test</h2>
+            <p>Sign in or use your access code</p>
+            
+            <div class="main-page-buttons">
+                <button class="btn btn-primary" onclick="showQuizAccessForm()">
+                    <i class="fas fa-key"></i>
+                    <span>Sign In with Quiz Access Code</span>
+                </button>
+                <button class="btn btn-primary" onclick="showRegistrationPage()">
+                    <i class="fas fa-user-plus"></i>
+                    <span>Sign Up to Get Quiz Access</span>
+                </button>
+                <button class="btn btn-purple" onclick="showDeveloperAccessForm()">
+                    <i class="fas fa-code"></i>
+                    <span>Developer Access</span>
+                </button>
+            </div>
+            
+            <div id="developer-access-form" class="quiz-access-section">
+                <h3><i class="fas fa-user-secret"></i> Developer Login</h3>
+                <div class="password-container input-container">
+                    <input type="password" id="developerPassword" class="form-input" placeholder="Enter the Developer Password">
+                    <i class="fas fa-eye-slash input-icon" id="toggleDeveloperPassword"></i>
+                </div>
+                <button class="btn btn-purple" onclick="checkDeveloperPassword()">
+                    <span>Log In</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <div id="dev-error-box" class="error-box">
+                    <i class="fas fa-exclamation-circle"></i> Invalid developer password.
+                </div>
+            </div>
+            
+            <div id="quiz-access-form" class="quiz-access-section">
+                <h3><i class="fas fa-key"></i> Enter Quiz Access Code</h3>
+                <div class="password-container input-container">
+                    <input type="password" id="quizAccessCode" class="form-input" placeholder="Enter your 12-Digit Quiz Access Code here">
+                    <i class="fas fa-eye-slash input-icon" id="toggleQuizAccessCode"></i>
+                </div>
+                <button class="btn btn-primary" onclick="accessQuiz(document.getElementById('quizAccessCode').value)">
+                    <span>Access Quiz</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <div id="quiz-error-box" class="error-box">
+                    <i class="fas fa-exclamation-circle"></i> Invalid quiz access code.
+                </div>
+            </div>
+            
+        </div>
+
+        <div id="registration-page" class="page">
+            <div class="promo-banner">
+                <h2><i class="fas fa-graduation-cap"></i> Unlock Your Potential with WHITE COAT WARRIORS</h2>
+                <p>Boost your preparation with WHITE COAT WARRIORS's realistic online tests, crafted by experts to mirror the actual exam's pattern and challenge. Experience instant feedback, detailed analysis, and flexible online access – your pathway to confidence and success!</p>
+            </div>
+            
+            <h2><i class="fas fa-user-edit"></i> Student Registration</h2>
+            <p>Please provide your details to register</p>
+            
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-user"></i> Student Name</label>
+                <input type="text" id="studentName" class="form-input" placeholder="Enter your full name">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-user-friends"></i> Father Name</label>
+                <input type="text" id="fatherName" class="form-input" placeholder="Enter your father's name">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-envelope"></i> Email Address</label>
+                <input type="email" id="email" class="form-input" placeholder="Enter your email address">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-phone"></i> Mobile Number (WhatsApp)</label>
+                <input type="tel" id="mobile" class="form-input" placeholder="+92XXXXXXXXXX">
+            </div>
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-city"></i> City / District</label>
+                <input type="text" id="city" class="form-input" placeholder="Enter your city/district">
+            </div>
+            <button class="btn btn-primary" onclick="handleRegistration()">
+                <span>Submit to Get Access to Quiz</span>
+                <i class="fas fa-arrow-right"></i>
+            </button>
+            <button class="btn btn-red" style="margin-top: 3.75px;" onclick="showPage('signin-page')">
+                <i class="fas fa-chevron-left"></i> Back to Home
+            </button>
+        </div>
+
+        <div id="quiz-page" class="page">
+            <div class="promo-banner">
+                <h2><i class="fas fa-graduation-cap"></i> Unlock Your Potential with WHITE COAT WARRIORS</h2>
+                <p>Boost your preparation with WHITE COAT WARRIORS's realistic online tests, crafted by experts to mirror the actual exam's pattern and challenge. Experience instant feedback, detailed analysis, and flexible online access – your pathway to confidence and success!</p>
+            </div>
+
+            <div class="quiz-header">
+                <div class="quiz-title-container">
+                    <h2 id="quiz-title"></h2>
+                    <div class="quiz-info">
+                        <span><i class="fas fa-book"></i> Subject: <span id="quiz-subject">English Grammar</span></span>
+                        <span><i class="fas fa-clock"></i> Per MCQ: <span id="per-mcq-time">1</span> Minute</span>
+                    </div>
+                </div>
+            </div>
+            <div class="timer-container">
+                <div class="timer" id="question-timer">60</div>
+                <div class="timer total-timer" id="timer">40:00</div>
+            </div>
+
+            <div class="progress-container">
+                <div class="progress-bar" id="quiz-progress"></div>
+            </div>
+
+            <div class="question-nav" id="question-nav"></div>
+            
+            <div class="question-container">
+                <div class="question-text" id="question-text"></div>
+                <div class="options-container" id="options-container"></div>
+                <div class="reasoning" id="reasoning">
+                    <div class="reasoning-title"><i class="fas fa-lightbulb"></i> Explanation:</div>
+                    <div id="reasoning-text"></div>
+                </div>
+            </div>
+            
+            <div class="navigation-buttons">
+                <button class="nav-btn btn-back" onclick="navigateQuestion('prev')">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+                <button class="nav-btn btn-next" onclick="navigateQuestion('next')">
+                    Next <i class="fas fa-arrow-right"></i>
+                </button>
+                <button class="nav-btn btn-reasoning disabled" id="reasoning-btn" onclick="toggleReasoning()">
+                    <i class="fas fa-lightbulb"></i> Reasoning
+                </button>
+                <button class="nav-btn btn-submit" onclick="submitTest()">
+                    Submit <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+
+        <div id="results-page" class="page">
+            <div class="results-header-buttons">
+                <a id="website-link" href="#" target="_blank" class="btn btn-primary"><i class="fas fa-globe"></i> Website</a>
+                <a id="whatsapp-contact-link" href="#" target="_blank" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> Whatsapp Contact</a>
+                <a id="whatsapp-community-link" href="#" target="_blank" class="btn btn-whatsapp"><i class="fas fa-users"></i> Whatsapp Community</a>
+            </div>
+            
+            <div class="quick-stats">
+                <div class="stat-card correct">
+                    <div class="stat-value" id="correct-count">0</div>
+                    <div class="stat-label">Correct</div>
+                </div>
+                <div class="stat-card incorrect">
+                    <div class="stat-value" id="incorrect-count">0</div>
+                    <div class="stat-label">Incorrect</div>
+                </div>
+                <div class="stat-card unanswered">
+                    <div class="stat-value" id="unanswered-count">0</div>
+                    <div class="stat-label">Unanswered</div>
+                </div>
+            </div>
+            
+            <div class="performance-meter">
+                <div class="performance-fill" id="performance-fill"></div>
+            </div>
+            
+            <div class="result-card">
+                <h2><i class="fas fa-user-graduate"></i> Student Information</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Field</th>
+                            <th>Detail</th>
+                        </tr>
+                    </thead>
+                    <tbody id="student-info-table"></tbody>
+                </table>
+            </div>
+
+            <div class="result-card">
+                <h2><i class="fas fa-chart-bar"></i> Test Results</h2>
+                <table>
+                    <tbody id="quiz-results-table"></tbody>
+                </table>
+            </div>
+            
+            <div class="result-actions">
+                <button class="btn btn-primary" onclick="restartTest()">
+                    <i class="fas fa-redo"></i> Retake Full Test
+                </button>
+                <button class="btn btn-primary" onclick="retakeIncorrect()">
+                    <i class="fas fa-bolt"></i> Retake Incorrect Questions
+                </button>
+                <button class="btn btn-primary" onclick="viewAllMcqs()">
+                    <i class="fas fa-clipboard-list"></i> View All MCQs
+                </button>
+            </div>
+        </div>
+
+        <div id="all-mcqs-page" class="page">
+            <h2><i class="fas fa-list-alt"></i> All MCQs and Solutions</h2>
+            <div class="all-mcqs-list" id="all-mcqs-list"></div>
+            <button class="btn btn-primary" onclick="showPage('results-page')">
+                <i class="fas fa-arrow-left"></i> Back to Results
+            </button>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html><script>// ***************************************************************
+// !! IMPORTANT: GOOGLE APPS SCRIPT URL FOR DATA LOGGING !!
+const SHEET_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw2N316gzPWvSV7_59Mjx49idXLH8Sc7S_S0nHhvGjYxhhGjTm8UBnsRB4VGgeuluL0/exec';
+// ***************************************************************
+
+// Quiz Data
+const quizData_WCW_PHY_03 = [
+    {
+        question: "Q: Which fundamental characteristic distinguishes permanent magnets from other materials mentioned in the context of magnetic fields?",
+        options: [
+            "They generate their own persistent magnetic field",
+            "They only repel other magnets",
+            "They require an electric current to operate",
+            "They are solely composed of iron"
+        ],
+        correctAnswer: 0,
+        reasoning: "The Book theory state that a permanent magnet creates its own persistent magnetic field."
+    },
+    {
+        question: "Q: What specific type of material is mentioned as being attracted by magnets?",
+        options: [
+            "Conductive polymers",
+            "Non-metallic alloys",
+            "Ferromagnetic substances",
+            "Insulating ceramics"
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory state that magnets are capable of attracting ferromagnetic materials (like iron)."
+    },
+    {
+        question: "Q: Which of the following is explicitly stated as non-existent in the realm of magnetism?",
+        options: [
+            "A magnetic dipole",
+            "A magnetic monopole",
+            "A magnetic field line",
+            "A magnetic compass"
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory state that a crucial concept highlighted is the non-existence of a magnetic monopole."
+    },
+    {
+        question: "Q: Oersted's discovery fundamentally established a relationship between which two physical phenomena?",
+        options: [
+            "Heat and light",
+            "Gravity and mass",
+            "Electric currents and magnetic fields",
+            "Sound and pressure"
+        ],
+        correctAnswer: 3,
+        reasoning: "The Book theory state that Oersted's discovery demonstrated that an electric current produces a magnetic field."
+    },
+    {
+        question: "Q: When iron filings are used to visualize the magnetic field around a current-carrying wire, what pattern do they typically form?",
+        options: [
+            "Concentric circles",
+            "Parallel lines",
+            "Radial spokes",
+            "Helical spirals"
+        ],
+        correctAnswer: 0,
+        reasoning: "The Book theory state that iron filings form concentric circles around a current-carrying wire."
+    },
+    {
+        question: "Q: The SI unit for magnetic field is named after which scientist?",
+        options: [
+            "Weber",
+            "Tesla",
+            "Ampere",
+            "Oersted"
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory state that the SI unit for magnetic field is the Tesla."
+    },
+    {
+        question: "Q: What describes the behavior of a magnetic force on a charged particle when its velocity is perfectly parallel to the magnetic field direction?",
+        options: [
+            "It is at its maximum",
+            "It causes circular motion",
+            "It causes helical motion",
+            "It is entirely absent"
+        ],
+        correctAnswer: 3,
+        reasoning: "The Book theory state that the force is zero when the velocity is parallel to the field (θ=0°)."
+    },
+    {
+        question: "Q: A charged particle, initially at rest, is placed within a uniform magnetic field. What magnetic influence will it experience?",
+        options: [
+            "A maximum deflecting force",
+            "A force causing circular motion",
+            "No magnetic force",
+            "A force parallel to the field"
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory state that a moving charged particle experiences a magnetic force, whereas a stationary charge does not."
+    },
+    {
+        question: "Q: How is the magnetic force on a current-carrying conductor oriented relative to both the current direction and the magnetic field?",
+        options: [
+            "Perpendicular to both",
+            "Parallel to the current",
+            "Parallel to the magnetic field",
+            "In the same plane as both"
+        ],
+        correctAnswer: 0,
+        reasoning: "The Book theory state that the direction of this force is determined by Right-Hand Rule II or Fleming's Left Hand Rule, which imply perpendicularity."
+    },
+    {
+        question: "Q: What physical quantity is defined as the scalar product of magnetic induction and the area vector through which field lines pass?",
+        options: [
+            "Magnetic field strength",
+            "Magnetic force",
+            "Magnetic permeability",
+            "Magnetic flux"
+        ],
+        correctAnswer: 3,
+        reasoning: "The Book theory state that Magnetic Flux (Φ_B) is introduced as a scalar quantity, defined as the scalar product of magnetic induction (B) and the area vector (A)."
+    },
+    {
+        question: "Q: The SI unit of magnetic flux is known by which scientific name?",
+        options: [
+            "Tesla",
+            "Weber",
+            "Ampere",
+            "Henry"
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory state that the SI unit for magnetic flux is the Weber."
+    },
+    {
+        question: "Q: What describes the internal magnetic field of an ideal solenoid?",
+        options: [
+            "Uniform and strong along its axis",
+            "Weak and highly non-uniform",
+            "Strong and concentrated at its ends",
+            "Zero throughout its interior"
+        ],
+        correctAnswer: 0,
+        reasoning: "The Book theory state that an ideal solenoid has a uniform internal field, effectively behaving like a bar magnet."
+    },
+    {
+        question: "Q: The 'cyclotron frequency' refers to what specific characteristic of a charged particle's motion in a uniform magnetic field?",
+        options: [
+            "Its angular velocity",
+            "Its orbital radius",
+            "Its frequency of revolution",
+            "Its time period of revolution"
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory state that frequency of revolution is also known as Cyclotron Frequency."
+    },
+    {
+        question: "Q: Which rule helps determine the direction of the magnetic field lines around a current-carrying wire?",
+        options: [
+            "Right-Hand Rule II",
+            "Right-Hand Rule I",
+            "Fleming's Left Hand Rule",
+            "Ampere's Law"
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory state that Right-Hand Rule I determines the direction of the magnetic field lines around a current-carrying wire."
+    },
+    {
+        question: "Q: What is the primary characteristic of a solenoid as described in the document?",
+        options: [
+            "A flat metallic plate",
+            "A single straight wire",
+            "A closed conducting loop",
+            "A coil wound in the form of a helix"
+        ],
+        correctAnswer: 3,
+        reasoning: "The Book theory state that a solenoid is a coil wound in the form of a helix."
+    },
+    {
+        question: "Q: The document introduces various magnetic recording media. Which of these is *not* mentioned as an application?",
+        options: [
+            "Compact discs",
+            "VHS tapes",
+            "Audio cassettes",
+            "Floppy disks"
+        ],
+        correctAnswer: 0,
+        reasoning: "The Book theory state that practical applications of magnetic recording media, such as VHS tapes, audio cassettes, floppy disks, hard disks, and the magnetic strips on credit/debit/ATM cards, are introduced. Compact discs are not mentioned."
+    },
+    {
+        question: "Q: According to the Right-Hand Rule I, how does one correctly identify the direction of the magnetic field lines generated by a straight current?",
+        options: [
+            "Thumb points to the field, fingers curl in current direction",
+            "Fingers point to the field, thumb curls in current direction",
+            "Thumb points in current direction, fingers curl in field direction",
+            "Fingers point in current direction, thumb indicates force"
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory state that Right-Hand Rule I: if the thumb points in the direction of conventional current, the curled fingers indicate the direction of the magnetic field lines."
+    },
+    {
+        question: "Q: In the definition of one Tesla, a 1-meter wire carrying a 1-Ampere current must be oriented how with respect to the magnetic field to experience a 1-Newton force?",
+        options: [
+            "Parallel to the field",
+            "Perpendicular to the field",
+            "At a 45-degree angle to the field",
+            "Coincident with the field lines"
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory state that a Tesla is defined as the magnetic induction when a 1m wire carrying 1A current perpendicular to the field experiences a 1N force."
+    },
+    {
+        question: "Q: When is the magnetic flux through a surface considered to be at its minimum or zero value?",
+        options: [
+            "When the surface area vector is parallel to the magnetic field",
+            "When the surface is perpendicular to the magnetic field",
+            "When the surface area is infinitely large",
+            "When the surface area vector is perpendicular to the magnetic field"
+        ],
+        correctAnswer: 3,
+        reasoning: "The Book theory state that magnetic flux is minimum/zero when the area vector is perpendicular to the magnetic field (θ=90°, surface parallel to B)."
+    },
+    {
+        question: "Q: Ampere's Circuital Law is stated as being particularly advantageous for determining magnetic flux density under what specific condition regarding currents and magnetic fields?",
+        options: [
+            "For steady currents in uniform magnetic field regions",
+            "For oscillating currents in non-uniform fields",
+            "For transient currents in varying fields",
+            "For alternating currents in rapidly changing fields"
+        ],
+        correctAnswer: 0,
+        reasoning: "The Book theory state that Ampere's Circuital Law is particularly useful for determining magnetic flux density for steady currents in uniform magnetic field regions."
+    },
+    {
+        question: "Q: The permeability of vacuum, represented as μ₀, is a fundamental constant. What value and unit are associated with it?",
+        options: [
+            "8.85 × 10⁻¹² F/m",
+            "9 × 10⁹ N·m²/C²",
+            "4π × 10⁻⁷ T·m/A",
+            "6.67 × 10⁻¹¹ N·m²/kg²"
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory state that μ₀ is the permeability of vacuum, a constant with a value of 4π × 10⁻⁷ T·m/A."
+    },
+    {
+        question: "Q: An ideal solenoid is characterized by which specific property concerning its external magnetic field?",
+        options: [
+            "It is strong and uniform",
+            "It is nearly zero",
+            "It is directed inwards",
+            "It is highly variable"
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory state that an ideal solenoid (closely spaced turns, length much greater than radius) has a nearly zero external field."
+    },
+    {
+        question: "Q: According to Right-Hand Rule III for solenoids, if the fingers curl in the direction of the current, what does the extended thumb indicate?",
+        options: [
+            "The direction of the magnetic field outside the solenoid",
+            "The direction of the magnetic force on the solenoid",
+            "The direction of the solenoid's South pole",
+            "The direction of the solenoid's North pole"
+        ],
+        correctAnswer: 3,
+        reasoning: "The Book theory state that Right-Hand Rule III helps determine the direction of the solenoid's magnetic field: curled fingers in the direction of current, extended thumb points to the North pole."
+    },
+    {
+        question: "Q: When a charged particle moves with its initial velocity perfectly perpendicular to a uniform magnetic field, the magnetic force acts as what kind of central influence?",
+        options: [
+            "A centripetal force",
+            "A gravitational force",
+            "An electrostatic force",
+            "A frictional force"
+        ],
+        correctAnswer: 0,
+        reasoning: "The Book theory state that when a charged particle moves with its initial velocity perpendicular to a uniform magnetic field, the magnetic force acts as a centripetal force."
+    },
+    {
+        question: "Q: The magnetic force on a moving charge is determined by its magnitude, its velocity, the magnetic field strength, and the sine of the angle between which two vectors?",
+        options: [
+            "Charge and field",
+            "Field and force",
+            "Velocity and field",
+            "Velocity and force"
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory state that F_B = qvBsinθ, where θ is the angle between v and B."
+    },
+    {
+        question: "Q: Consider a scenario involving a long straight current-carrying wire and a separate current-carrying conductor placed within its vicinity. If the current in the long straight wire is doubled, and the current in the separate conductor is simultaneously halved, how would the maximum magnetic force experienced by a specific segment of the separate conductor change, assuming its length and the perpendicular distance from the wire remain constant?",
+        options: [
+            "It is quadrupled",
+            "It remains unchanged",
+            "It is halved",
+            "It is quartered"
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory state that the magnetic field from a long straight wire is proportional to the current in the wire (B ~ I_wire). The force on a conductor in a magnetic field is proportional to the field strength and the current in the conductor (F ~ B * I_conductor). If I_wire is doubled and I_conductor is halved, then B doubles and F halves due to I_conductor, but doubles due to B. So, F ~ (2B) * (I_conductor/2) = B * I_conductor. Thus, the maximum magnetic force remains unchanged."
+    },
+    {
+        question: "Q: A current-carrying wire is positioned in a uniform magnetic field. If the current through the wire is increased, and the length of the wire interacting with the field is simultaneously decreased by the same multiplicative factor, how does the magnetic force on the wire change, assuming the orientation remains optimal for maximum force?",
+        options: [
+            "It quadruples",
+            "It decreases",
+            "It increases",
+            "It remains unchanged"
+        ],
+        correctAnswer: 3,
+        reasoning: "The Book theory state that the magnetic force on a conductor is directly proportional to both the current (I) and the length (L) of the wire in the field. If I is increased by a factor (e.g., k) and L is decreased by the same factor (1/k), then the product IL remains constant. Therefore, the magnetic force remains unchanged."
+    },
+    {
+        question: "Q: If the magnetic field strength through a closed loop is halved, and the area of the loop is simultaneously doubled, how does the maximum magnetic flux through that loop behave?",
+        options: [
+            "It remains unchanged",
+            "It is halved",
+            "It is quadrupled",
+            "It is doubled"
+        ],
+        correctAnswer: 0,
+        reasoning: "The Book theory state that magnetic flux is the product of magnetic induction (B) and area (A) when optimally aligned (Φ_B = BA). If B is halved (B/2) and A is doubled (2A), then the new flux is (B/2) * (2A) = BA. Thus, the magnetic flux remains unchanged."
+    },
+    {
+        question: "Q: A charged particle executes circular motion within a uniform magnetic field. If the magnetic field intensity is increased, how would both the radius of its path and its period of revolution fundamentally change, assuming its velocity, mass, and charge are constant?",
+        options: [
+            "Radius increases, period increases",
+            "Radius remains constant, period decreases",
+            "Radius decreases, period decreases",
+            "Radius increases, period decreases"
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory state that the radius of the circular path is inversely proportional to the magnetic field (r ~ 1/B). The time period of revolution is also inversely proportional to the magnetic field (T ~ 1/B). Therefore, if the magnetic field intensity is increased, both the radius and the period of revolution decrease."
+    },
+    {
+        question: "Q: An ideal solenoid produces a magnetic field. If the current flowing through its windings is doubled, and the number of turns per unit length is simultaneously halved, what effect does this have on the magnetic field strength inside the solenoid?",
+        options: [
+            "It is halved",
+            "It remains unchanged",
+            "It is quadrupled",
+            "It is doubled"
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory state that the magnetic field inside an ideal solenoid is proportional to the product of the number of turns per unit length (n) and the current (I) (B ~ nI). If I is doubled (2I) and n is halved (n/2), then the product nI becomes (n/2)*(2I) = nI. Thus, the magnetic field strength inside the solenoid remains unchanged."
+    },
+    {
+        question: "Q: Consider a scenario where the force on a current-carrying conductor is being analyzed. If the current is kept constant, but the magnetic field strength is doubled, and the length of the conductor within the field is halved, how would the force on the conductor change if the orientation is kept for maximum effect?",
+        options: [
+            "The force remains unchanged",
+            "The force quadruples",
+            "The force halves",
+            "The force doubles"
+        ],
+        correctAnswer: 0,
+        reasoning: "The Book theory state that the magnetic force is proportional to current, length, and magnetic field (F ~ ILB). If I is constant, B is doubled (2B), and L is halved (L/2), then F ~ I * (L/2) * (2B) = ILB. The force remains unchanged."
+    },
+    {
+        question: "Q: A charged particle enters a uniform magnetic field with its velocity perpendicular to the field. If the particle's charge is doubled and its mass is also doubled, while its velocity and the magnetic field strength remain constant, how do its angular velocity and the radius of its circular path fundamentally change?",
+        options: [
+            "Angular velocity increases, radius decreases",
+            "Angular velocity increases, radius remains unchanged",
+            "Angular velocity remains unchanged, radius remains unchanged",
+            "Angular velocity decreases, radius increases"
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory state that angular velocity (ω) is proportional to charge and inversely proportional to mass (ω ~ q/m). The radius (r) is proportional to mass and inversely proportional to charge (r ~ m/q). If both q and m are doubled, then q/m remains unchanged, and m/q remains unchanged. Thus, both angular velocity and radius remain unchanged."
+    },
+    {
+        question: "Q: If the magnetic flux density around a long straight current-carrying wire is to be maintained at a certain point, but the current in the wire is halved, what adjustment must be made to the radial distance from the wire?",
+        options: [
+            "The distance must be doubled",
+            "The distance must be halved",
+            "The distance must be quadrupled",
+            "The distance must be quartered"
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory state that the magnetic field (B) around a long straight current-carrying wire is inversely proportional to the radial distance (r) and directly proportional to the current (I) (B ~ I/r). If B is to be maintained and I is halved (I/2), then to keep B constant, r must also be halved (r/2) so that (I/2)/(r/2) = I/r."
+    },
+    {
+        question: "Q: A solenoid's magnetic field is considered. If the total number of turns is doubled, but the solenoid's length is also doubled, while the current is kept constant, what happens to the magnetic field strength inside?",
+        options: [
+            "It is quadrupled",
+            "It is halved",
+            "It is doubled",
+            "It remains unchanged"
+        ],
+        correctAnswer: 3,
+        reasoning: "The Book theory state that the magnetic field inside a solenoid is proportional to the number of turns per unit length (n = N/L) and current (B ~ (N/L)I). If N is doubled (2N) and L is doubled (2L), then N/L becomes (2N)/(2L) = N/L. Thus, the magnetic field strength inside remains unchanged."
+    },
+    {
+        question: "Q: For a charged particle moving in a circular path within a uniform magnetic field, if its kinetic energy is doubled, how does its frequency of revolution fundamentally change, assuming the magnetic field strength and charge remain constant?",
+        options: [
+            "It remains unchanged",
+            "It quadruples",
+            "It is halved",
+            "It doubles"
+        ],
+        correctAnswer: 0,
+        reasoning: "The Book theory state that frequency of revolution (f) is independent of the particle's velocity or kinetic energy (f = qB/2πm). If only kinetic energy changes (meaning velocity changes, but q, B, m are constant), the frequency of revolution remains unchanged."
+    },
+    {
+        question: "Q: If a current-carrying conductor is aligned perfectly perpendicular to a uniform magnetic field, and then the conductor's length is halved, what change in current is required to maintain the original maximum magnetic force?",
+        options: [
+            "The current must be quadrupled",
+            "The current must be halved",
+            "The current must be doubled",
+            "The current must remain constant"
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory state that the maximum magnetic force is proportional to the product of current (I) and length (L) (F ~ IL). If F is to be maintained and L is halved (L/2), then I must be doubled (2I) so that (2I)*(L/2) = IL."
+    },
+    {
+        question: "Q: Consider the conditions for maximum magnetic flux through a surface. If the magnetic field strength is tripled, but the angle between the area vector and the magnetic field is adjusted from optimal to a point where the cosine of the angle is one-third its original optimal value, what happens to the magnetic flux?",
+        options: [
+            "It increases",
+            "It remains unchanged",
+            "It decreases",
+            "It quadruples"
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory state that magnetic flux is given by Φ_B = BAcosθ. For maximum flux, cosθ = 1 (optimal value). If B is tripled (3B), and cosθ becomes 1/3 of its optimal (1/3), then the new flux is (3B) * A * (1/3) = BA. Thus, the magnetic flux remains unchanged."
+    },
+    {
+        question: "Q: A current-carrying conductor in a magnetic field experiences a force. If the current is doubled and the length of the conductor is also doubled, but the magnetic field strength is simultaneously halved, how does the magnitude of the maximum magnetic force change?",
+        options: [
+            "It halves",
+            "It quadruples",
+            "It remains unchanged",
+            "It doubles"
+        ],
+        correctAnswer: 3,
+        reasoning: "The Book theory state that the magnetic force on a conductor is proportional to current (I), length (L), and magnetic field (B) (F ~ ILB). If I is doubled (2I), L is doubled (2L), and B is halved (B/2), then the new force F_new ~ (2I)(2L)(B/2) = 2ILB. So, the force doubles."
+    },
+    {
+        question: "Q: For a charged particle orbiting in a magnetic field, if its mass is quadrupled while its charge and the magnetic field strength remain constant, how do its angular velocity and the radius of its path change, assuming constant kinetic energy?",
+        options: [
+            "Angular velocity decreases, radius increases",
+            "Angular velocity increases, radius decreases",
+            "Angular velocity remains constant, radius increases",
+            "Angular velocity decreases, radius remains constant"
+        ],
+        correctAnswer: 0,
+        reasoning: "The Book theory state that angular velocity (ω = qB/m) is inversely proportional to mass (ω ~ 1/m). The radius (r = mv/qB) is directly proportional to mass (r ~ m) and velocity (r ~ v). If mass is quadrupled (4m) and kinetic energy (0.5mv²) is constant, then velocity must be halved (v/2). So, new ω = qB/(4m) = ω/4 (decreases by a factor of four). New r = (4m)(v/2)/qB = 2(mv/qB) = 2r (doubles). Thus, angular velocity decreases, and radius increases."
+    },
+    {
+        question: "Q: The magnetic field inside an ideal solenoid is to be maintained. If the current is doubled and the solenoid's length is halved, how must the total number of turns (N) be adjusted?",
+        options: [
+            "The number of turns must be quadrupled",
+            "The number of turns must be halved",
+            "The number of turns must be quartered",
+            "The number of turns must be doubled"
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory state that the magnetic field inside an ideal solenoid is B = μ₀(N/L)I. If B is constant, I is doubled (2I), and L is halved (L/2). We need (N/L)I to remain constant. So, (N_new / (L/2)) * (2I) = (N_old / L) * I. This simplifies to (4 * N_new * I / L) = (N_old * I / L). Therefore, 4 * N_new = N_old, meaning N_new = N_old / 4. The number of turns must be quartered."
+    },
+    {
+        question: "Q: A charged particle is moving in a uniform magnetic field, causing it to follow a circular path. If the particle's speed is suddenly increased by a factor of three, while the magnetic field strength is simultaneously decreased by a factor of three, how would the particle's frequency of revolution and the time it takes to complete one orbit fundamentally change?",
+        options: [
+            "Frequency decreases by a factor of three, time period triples",
+            "Frequency triples, time period decreases by a factor of three",
+            "Frequency remains unchanged, time period remains unchanged",
+            "Frequency triples, time period remains unchanged"
+        ],
+        correctAnswer: 0,
+        reasoning: "The Book theory state that the frequency of revolution (f = qB/2πm) and time period (T = 2πm/qB) are independent of the particle's speed. They depend on charge (q), magnetic field (B), and mass (m). If B decreases by a factor of three (B/3), then frequency f becomes f/3, and time period T becomes 3T. Thus, the frequency decreases by a factor of three, and the time period triples."
+    },
+    {
+        question: "Q: Imagine a long straight wire carrying a current and a solenoid placed far from it. A very small compass is initially placed near the wire, and its needle aligns with the wire's magnetic field. If this compass is then moved into the very center of the *ideal* solenoid while it also carries a current, how would its alignment most predictably change?",
+        options: [
+            "It would align perpendicular to the solenoid's axis",
+            "It would continue to align with the wire's field",
+            "It would align with the solenoid's axis",
+            "It would become randomly oriented"
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory state that a solenoid produces a reasonably uniform and strong magnetic field along its axis. An ideal solenoid has a nearly zero external field and a uniform internal field. When the compass is in the center of the ideal solenoid, it aligns with the strong internal field along the solenoid's axis, overriding any distant fields."
+    },
+    {
+        question: "Q: If the permeability of a medium surrounding a long straight current-carrying wire is quadrupled, how would the radial distance from the wire need to be adjusted to maintain the original magnetic field strength at that location, assuming the current remains constant?",
+        options: [
+            "The distance must be halved",
+            "The distance must be quadrupled",
+            "The distance must be doubled",
+            "The distance must be quartered"
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory state that for any other medium, the permeability (μ = μᵣμ₀) is used in Ampere's Law. The magnetic field around a long straight current-carrying wire is proportional to the permeability of the medium (B ~ μI / r). If B is to be maintained and μ is quadrupled (4μ), then r must also be quadrupled (4r) to keep μ/r constant. Thus, the distance must be quadrupled."
+    },
+    {
+        question: "Q: A current-carrying conductor in a magnetic field experiences a force. If the current is doubled and the magnetic field strength is also doubled, while the angle between the current direction and the magnetic field remains optimally perpendicular, how does the magnitude of the magnetic force change?",
+        options: [
+            "It remains unchanged",
+            "It halves",
+            "It doubles",
+            "It quadruples"
+        ],
+        correctAnswer: 3,
+        reasoning: "The Book theory state that the magnitude of the force is F_B = ILBsinθ. If I is doubled (2I), B is doubled (2B), and sinθ remains 1 (for optimal perpendicularity), then the new force F_new ~ (2I)L(2B)(1) = 4ILB. Thus, the magnetic force quadruples."
+    },
+    {
+        question: "Q: A charged particle in a uniform magnetic field describes a circular path. If the kinetic energy of the particle is increased by a factor of 9, how would its angular velocity and the radius of its orbit change, assuming its charge, mass, and the magnetic field strength remain constant?",
+        options: [
+            "Angular velocity remains constant, radius increases by a factor of three",
+            "Angular velocity triples, radius triples",
+            "Angular velocity decreases by a factor of three, radius decreases by a factor of three",
+            "Angular velocity triples, radius increases by a factor of nine"
+        ],
+        correctAnswer: 0,
+        reasoning: "The Book theory state that angular velocity (ω = qB/m) is independent of the particle's velocity or kinetic energy. Thus, angular velocity remains constant. Kinetic energy (KE) is proportional to v² (KE ~ v²). If KE is increased by a factor of 9, then v² increases by a factor of 9, meaning v increases by a factor of 3. The radius of the path (r = mv/qB) is directly proportional to velocity (r ~ v). Therefore, if v triples, the radius triples. So, angular velocity remains constant, and radius increases by a factor of three."
+    },
+    {
+        question: "Q: A long straight current-carrying wire is configured such that the magnetic field strength at a specific radial distance is B. If the current in the wire is halved, and the permeability of the surrounding medium remains constant, how must the radial distance from the wire be adjusted to maintain the identical magnetic field strength B?",
+        options: [
+            "The distance must be quadrupled",
+            "The distance must be quartered",
+            "The distance must be halved",
+            "The distance must be doubled"
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory state that the magnetic field (B) around a long straight current-carrying wire is proportional to the current (I) and inversely proportional to the radial distance (r) (B ~ I/r for constant μ). If B is to be maintained and I is halved (I/2), then r must also be halved (r/2) so that (I/2)/(r/2) = I/r. Thus, the distance must be halved."
+    },
+    {
+        question: "Q: Consider a system where a magnetic force acts on a current-carrying conductor in a uniform magnetic field. If the current is held constant, and the conductor's length is also constant, how would altering the angle between the current direction and the magnetic field from its maximum force orientation to a smaller acute angle affect the required magnetic field strength to maintain the original force?",
+        options: [
+            "The field strength must be decreased",
+            "The field strength must be increased",
+            "The field strength must remain constant",
+            "The field strength must be quadrupled"
+        ],
+        correctAnswer: 1,
+        reasoning: "The Book theory state that the magnetic force is F_B = ILBsinθ. For maximum force, sinθ = 1. If the angle changes to a smaller acute angle, sinθ decreases (becomes less than 1). To maintain the original force (F_B), since I and L are constant, the magnetic field strength (B) must increase to compensate for the smaller sinθ value (B ~ 1/sinθ)."
+    },
+    {
+        question: "Q: A charged particle in a magnetic field begins to move in a circular path. If the particle's mass is doubled, and its charge is simultaneously quadrupled, how would its cyclotron frequency and the time period of its revolution change, assuming the magnetic field strength remains constant?",
+        options: [
+            "Frequency quadruples, period is quartered",
+            "Frequency remains constant, period remains constant",
+            "Frequency doubles, period is doubled",
+            "Frequency doubles, period is halved"
+        ],
+        correctAnswer: 3,
+        reasoning: "The Book theory state that the cyclotron frequency (f = qB/2πm) is proportional to charge (q) and inversely proportional to mass (m). The time period (T = 2πm/qB) is proportional to mass (m) and inversely proportional to charge (q). If m is doubled (2m) and q is quadrupled (4q): New f ~ (4q) / (2m) = 2(q/m). So frequency doubles. New T ~ (2m) / (4q) = (1/2)(m/q). So time period is halved. Thus, frequency doubles, and time period is halved."
+    },
+    {
+        question: "Q: A current-carrying conductor is placed in a uniform magnetic field, initially experiencing a specific magnetic force. If the magnetic field strength is tripled, and the angle between the current and the field changes such that the sine of the angle becomes one-third of its original value, how does the magnetic force fundamentally change, assuming current and length are constant?",
+        options: [
+            "It remains unchanged",
+            "It triples",
+            "It is halved",
+            "It decreases by a factor of three"
+        ],
+        correctAnswer: 0,
+        reasoning: "The Book theory state that the magnetic force is F_B = ILBsinθ. If B is tripled (3B), and sinθ becomes one-third of its original value (sinθ/3), then the new force F_new ~ I L (3B) (sinθ/3) = ILBsinθ. Thus, the magnetic force remains unchanged."
+    },
+    {
+        question: "Q: Consider an ideal solenoid. If the current flowing through its windings is halved, and the total number of turns remains constant, how must the length of the solenoid be adjusted to maintain the original magnetic field strength inside?",
+        options: [
+            "The length must be quadrupled",
+            "The length must be doubled",
+            "The length must be halved",
+            "The length must be quadrupled"
+        ],
+        correctAnswer: 2,
+        reasoning: "The Book theory state that the magnetic field inside an ideal solenoid is B = μ₀(N/L)I. To maintain the original B, the product (N/L)I must remain constant. If I is halved (I/2), and N remains constant (N): We need (N / L_new) * (I/2) = (N / L_old) * I. This simplifies to (1 / L_new) * (1/2) = (1 / L_old). So, L_old = 2 * L_new, which means L_new = L_old / 2. Thus, the length must be halved."
+    }
+];
+
+// Constants
+const QUIZ_ACCESS_CODE = "PreMium-A-12345";
+const DEV_ACCESS_CODE = "Dev-PDA-001";
+const ACADEMY_NAME = "WHITE COAT WORRIORS ";
+const QUIZ_SUBJECT = "Physics ";
+const WEBSITE_LINK = "https://premiumdoctoracademy.com";
+const WHATSAPP_CONTACT = "03287743851";
+const WHATSAPP_COMMUNITY = "https://whatsapp.com/channel/0029VaFCIU6EquiOlXWcNR1X";
+const TIME_PER_MCQ = 60;
+const MARK_PER_MCQ = 1;
+const NEGATIVE_MARKING = 0;
+
+// Global state variables
+let currentQuizId = 'WCW-PHY-03';
+let quizData = quizData_WCW_PHY_03;
+let currentQuestion = 0;
+let userAnswers = Array(quizData.length).fill(null);
+let timeLeft;
+let questionTimeLeft;
+let totalTimeInterval;
+let questionTimeInterval;
+let studentData = {};
+let studentAccessCode = "";
+
+// DOM elements
+const questionNavEl = document.getElementById('question-nav');
+const questionTextEl = document.getElementById('question-text');
+const optionsContainerEl = document.getElementById('options-container');
+const reasoningEl = document.getElementById('reasoning');
+const reasoningTextEl = document.getElementById('reasoning-text');
+const quizTitleEl = document.getElementById('quiz-title');
+const quizSubjectEl = document.getElementById('quiz-subject');
+const perMcqTimeEl = document.getElementById('per-mcq-time');
+const totalTimerEl = document.getElementById('timer');
+const questionTimerEl = document.getElementById('question-timer');
+const quizProgressEl = document.getElementById('quiz-progress');
+const studentInfoTable = document.getElementById('student-info-table');
+const quizResultsTable = document.getElementById('quiz-results-table');
+const allMcqsList = document.getElementById('all-mcqs-list');
+const devPasswordInput = document.getElementById('developerPassword');
+const devErrorBox = document.getElementById('dev-error-box');
+const quizAccessCodeInput = document.getElementById('quizAccessCode');
+const quizAccessErrorBox = document.getElementById('quiz-error-box');
+const toggleDevPasswordIcon = document.getElementById('toggleDeveloperPassword');
+const toggleQuizCodeIcon = document.getElementById('toggleQuizAccessCode');
+const websiteLinkEl = document.getElementById('website-link');
+const whatsappContactLinkEl = document.getElementById('whatsapp-contact-link');
+const whatsappCommunityLinkEl = document.getElementById('whatsapp-community-link');
+const reasoningBtn = document.getElementById('reasoning-btn');
+const quizNotificationEl = document.getElementById('quiz-notification');
+const notificationTitleEl = document.getElementById('notification-title');
+const notificationMessageEl = document.getElementById('notification-message');
+const notificationYesBtn = document.getElementById('notification-yes');
+const notificationNoBtn = document.getElementById('notification-no');
+const correctCountEl = document.getElementById('correct-count');
+const incorrectCountEl = document.getElementById('incorrect-count');
+const unansweredCountEl = document.getElementById('unanswered-count');
+const performanceFillEl = document.getElementById('performance-fill');
+
+
+/**
+ * @description Sends data to the Google Apps Script endpoint.
+ * @param {object} data - The payload containing type ('registration' or 'quiz_result') and data.
+ */
+function sendDataToSheet(data) {
+    if (!SHEET_SCRIPT_URL || SHEET_SCRIPT_URL.includes('YOUR_DEPLOYED_WEB_APP_URL')) {
+        console.error('SHEET_SCRIPT_URL is not configured. Data not sent to Google Sheet.');
+        return Promise.resolve({ success: false, message: 'Script URL not configured.' });
+    }
+
+    return fetch(SHEET_SCRIPT_URL, {
+        method: 'POST',
+        // 'no-cors' is necessary for Apps Script to accept cross-origin POST requests from a web page
+        mode: 'no-cors',
+        cache: 'no-cache',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => {
+        // Cannot read response body with 'no-cors', assume request was sent successfully
+        return { success: true, message: 'Request sent to Google Script.' };
+    })
+    .catch(error => {
+        console.error('Sheet Data Send Error:', error);
+        return { success: false, message: 'Failed to send request to Google Script.' };
+    });
+}
+
+
+// Initialization
+document.addEventListener('DOMContentLoaded', () => {
+    const storedStudentData = localStorage.getItem('studentData');
+    if (storedStudentData) {
+        studentData = JSON.parse(storedStudentData);
+        document.getElementById('studentName').value = studentData['Student Name'] || '';
+        document.getElementById('fatherName').value = studentData['Father Name'] || '';
+        document.getElementById('email').value = studentData['Email'] || '';
+        document.getElementById('mobile').value = studentData['Mobile'] || '';
+        document.getElementById('city').value = studentData['City'] || '';
+    }
+    const storedCode = localStorage.getItem('studentAccessCode');
+    if (storedCode) {
+        studentAccessCode = storedCode;
+    }
+    
+    showPage('signin-page');
+    
+    if (toggleDevPasswordIcon) toggleDevPasswordIcon.addEventListener('click', () => togglePasswordVisibility('developerPassword', 'toggleDeveloperPassword'));
+    if (toggleQuizCodeIcon) toggleQuizCodeIcon.addEventListener('click', () => togglePasswordVisibility('quizAccessCode', 'toggleQuizAccessCode'));
+});
+
+function showQuizNotification(title, message, type = 'info') {
+    const allowedNotifications = ['Registration Successful', 'Access Granted', 
+                                 'Quiz Completed!', 'Quiz Reset', 'Registration Error', 'Submission Error', 'Registration Warning'];
+    
+    if (!allowedNotifications.includes(title)) {
+        return;
+    }
+    
+    notificationTitleEl.textContent = title;
+    notificationMessageEl.textContent = message;
+    
+    quizNotificationEl.classList.remove('warning', 'error');
+    
+    if (type === 'warning') {
+        quizNotificationEl.classList.add('warning');
+    } else if (type === 'error') {
+        quizNotificationEl.classList.add('error');
+    }
+    
+    quizNotificationEl.classList.add('show');
+    
+    setTimeout(() => {
+        if (quizNotificationEl.classList.contains('show')) {
+            hideQuizNotification();
+        }
+    }, 5000);
+}
+
+function hideQuizNotification() {
+    quizNotificationEl.classList.remove('show');
+}
+
+function showPage(pageId) {
+    const pages = document.querySelectorAll('.page');
+    pages.forEach(page => page.classList.remove('active'));
+    document.getElementById(pageId).classList.add('active');
+    document.querySelectorAll('.error-box, .success-box').forEach(el => el.style.display = 'none');
+}
+
+function togglePasswordVisibility(inputID, iconID) {
+    const passwordInput = document.getElementById(inputID);
+    const toggleIcon = document.getElementById(iconID);
+    
+    if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        toggleIcon.classList.remove('fa-eye-slash');
+        toggleIcon.classList.add('fa-eye');
+    } else {
+        passwordInput.type = 'password';
+        toggleIcon.classList.remove('fa-eye');
+        toggleIcon.classList.add('fa-eye-slash');
+    }
+}
+
+function showQuizAccessForm() {
+    document.getElementById('quiz-access-form').style.display = 'flex';
+    document.getElementById('developer-access-form').style.display = 'none';
+}
+
+function showDeveloperAccessForm() {
+    document.getElementById('developer-access-form').style.display = 'flex';
+    document.getElementById('quiz-access-form').style.display = 'none';
+}
+
+function showRegistrationPage() {
+    showPage('registration-page');
+}
+
+// Registration Handler
+function generateAccessCode(studentName, fatherName) {
+    const studentInitials = studentName.split(' ').map(n => n[0]).join('').toUpperCase();
+    const fatherInitials = fatherName.split(' ').map(n => n[0]).join('').toUpperCase();
+    const uniqueId = Math.random().toString(36).substring(2, 7).toUpperCase();
+
+    return `${ACADEMY_NAME.replace(/\s+/g, '-')}-${studentInitials}${fatherInitials}-${uniqueId}`;
+}
+
+function handleRegistration() {
+    const sName = document.getElementById('studentName').value.trim();
+    const fName = document.getElementById('fatherName').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const mobile = document.getElementById('mobile').value.trim();
+    const city = document.getElementById('city').value.trim();
+    
+    if (!sName || !fName || !email || !mobile || !city) {
+        showQuizNotification('Registration Error', 'Please fill in all the registration details.', 'error');
+        return;
+    }
+    
+    // Generate access code
+    const generatedCode = generateAccessCode(sName, fName);
+    studentAccessCode = generatedCode;
+
+    studentData = {
+        'Student Name': sName,
+        'Father Name': fName,
+        'Email': email,
+        'Mobile': mobile,
+        'City': city
+    };
+
+    // --- NEW: SEND REGISTRATION DATA TO GOOGLE SHEET ---
+    const registrationDataToSend = {
+        type: 'registration',
+        accessCode: generatedCode,
+        studentName: sName,
+        fatherName: fName,
+        email: email,
+        mobile: mobile,
+        city: city
+    };
+    
+    sendDataToSheet(registrationDataToSend)
+        .then(response => {
+            console.log('Sheet Registration Response:', response);
+            showQuizNotification('Registration Successful', `Your code: ${generatedCode}. Data submitted to sheet.`, 'info');
+        })
+        .catch(error => {
+            console.error('Sheet Registration Error:', error);
+            showQuizNotification('Registration Warning', `Registration saved locally, but sheet submission failed.`, 'warning');
+        });
+    // ----------------------------------------------------
+    
+    // Store data locally
+    localStorage.setItem('studentAccessCode', generatedCode);
+    localStorage.setItem('studentData', JSON.stringify(studentData));
+    
+    const registrations = JSON.parse(localStorage.getItem('wcwRegistrations') || '[]');
+    registrations.push({
+        ...studentData,
+        accessCode: generatedCode,
+        timestamp: new Date().toISOString()
+    });
+    localStorage.setItem('wcwRegistrations', JSON.stringify(registrations));
+    
+    
+    // Start the quiz after registration
+    startQuiz('WCW-PHY-03', 'Student', generatedCode);
+}
+
+// Quiz Access Handler
+function checkDeveloperPassword() {
+    devErrorBox.style.display = 'none';
+    if (devPasswordInput.value === DEV_ACCESS_CODE) {
+        showQuizNotification('Access Granted', 'Welcome! You have successfully logged in as a developer.', 'info');
+        startQuiz('WCW-PHY-03', 'Developer', DEV_ACCESS_CODE);
+    } else {
+        devErrorBox.style.display = 'block';
+    }
+}
+
+function accessQuiz(inputCode) {
+    const errorBox = document.getElementById('quiz-error-box');
+    errorBox.style.display = 'none';
+    
+    const storedStudentCode = localStorage.getItem('studentAccessCode');
+    
+    if (inputCode === QUIZ_ACCESS_CODE || inputCode === DEV_ACCESS_CODE || inputCode === storedStudentCode) {
+        showQuizNotification('Access Granted', 'Welcome! You can now start the quiz.', 'info');
+        startQuiz('WCW-PHY-03', 'Student', inputCode);
+    } else {
+        errorBox.style.display = 'block';
+    }
+}
+
+function startQuiz(quizId, userType, code) {
+    currentQuizId = quizId;
+    quizData = quizData_WCW_PHY_03;
+    
+    // Always start fresh - no progress restoration
+    currentQuestion = 0;
+    userAnswers = Array(quizData.length).fill(null);
+    
+    timeLeft = quizData.length * TIME_PER_MCQ;
+    questionTimeLeft = TIME_PER_MCQ;
+    
+    localStorage.setItem('lastAccessCode', code);
+
+    showPage('quiz-page');
+    initQuiz();
+}
+
+// Quiz Logic
+function initQuiz() {
+    quizSubjectEl.textContent = QUIZ_SUBJECT;
+    perMcqTimeEl.textContent = Math.floor(TIME_PER_MCQ / 60);
+    
+    websiteLinkEl.href = WEBSITE_LINK;
+    whatsappContactLinkEl.href = 'https://wa.me/' + WHATSAPP_CONTACT;
+    whatsappCommunityLinkEl.href = WHATSAPP_COMMUNITY;
+    
+    quizTitleEl.textContent = `Test - ID: ${currentQuizId}`;
+    renderQuestionNav();
+    renderQuestion();
+
+    if (totalTimeInterval) clearInterval(totalTimeInterval);
+    if (questionTimeInterval) clearInterval(questionTimeInterval);
+    
+    totalTimeInterval = setInterval(updateTotalTimer, 1000);
+    questionTimeInterval = setInterval(updateQuestionTimer, 1000);
+}
+
+function updateTotalTimer() {
+    if (timeLeft > 0) {
+        timeLeft--;
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+        totalTimerEl.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+    } else {
+        clearInterval(totalTimeInterval);
+        submitTest(true);
+    }
+}
+
+function updateQuestionTimer() {
+    if (questionTimeLeft > 0) {
+        questionTimeLeft--;
+        questionTimerEl.textContent = `${questionTimeLeft}`;
+    } else {
+        questionTimeLeft = TIME_PER_MCQ;
+        navigateQuestion('next');
+    }
+}
+
+function renderQuestionNav() {
+    questionNavEl.innerHTML = '';
+    quizData.forEach((_, index) => {
+        const navItem = document.createElement('div');
+        navItem.classList.add('question-nav-item');
+        navItem.textContent = index + 1;
+        navItem.onclick = () => navigateQuestion(index);
+        
+        if (index === currentQuestion) {
+            navItem.classList.add('current');
+        } else if (userAnswers[index] !== null) {
+            navItem.classList.add('solved');
+        } else if (userAnswers.slice(0, index).some(ans => ans !== null) || index < currentQuestion) {
+             navItem.classList.add('visited');
+        }
+        
+        questionNavEl.appendChild(navItem);
+    });
+    updateProgressBar();
+}
+
+function updateProgressBar() {
+    const solvedCount = userAnswers.filter(answer => answer !== null).length;
+    const progress = (solvedCount / quizData.length) * 100;
+    quizProgressEl.style.width = `${progress}%`;
+}
+
+function renderQuestion() {
+    reasoningEl.style.display = 'none';
+    reasoningBtn.classList.add('disabled');
+    const question = quizData[currentQuestion];
+    questionTextEl.textContent = `${currentQuestion + 1}. ${question.question}`;
+    
+    optionsContainerEl.innerHTML = '';
+    question.options.forEach((option, index) => {
+        const optionEl = document.createElement('div');
+        optionEl.classList.add('option');
+        optionEl.textContent = option;
+        
+        const isAnswered = userAnswers[currentQuestion] !== null;
+
+        if (!isAnswered) {
+            optionEl.onclick = () => selectOption(index);
+        } else {
+            if (index === question.correctAnswer) {
+                optionEl.classList.add('correct');
+            } else if (index === userAnswers[currentQuestion]) {
+                optionEl.classList.add('incorrect');
+            }
+        }
+        
+        if (userAnswers[currentQuestion] === index) {
+            optionEl.classList.add('selected');
+        }
+
+        optionsContainerEl.appendChild(optionEl);
+    });
+    
+    questionTimeLeft = TIME_PER_MCQ;
+    questionTimerEl.textContent = `${questionTimeLeft}`;
+    renderQuestionNav();
+    
+    if (userAnswers[currentQuestion] !== null) {
+        reasoningBtn.classList.remove('disabled');
+    }
+}
+
+function selectOption(optionIndex) {
+    const question = quizData[currentQuestion];
+    userAnswers[currentQuestion] = optionIndex;
+    
+    reasoningBtn.classList.remove('disabled');
+    
+    const options = optionsContainerEl.querySelectorAll('.option');
+    options.forEach((option, index) => {
+        option.onclick = null;
+        option.classList.remove('selected', 'correct', 'incorrect');
+        
+        if (index === question.correctAnswer) {
+            option.classList.add('correct');
+        } else if (index === optionIndex) {
+            option.classList.add('incorrect');
+        }
+        
+        if (index === optionIndex) {
+             option.classList.add('selected');
+        }
+    });
+
+    renderQuestionNav();
+    
+    setTimeout(() => {
+        navigateQuestion('next');
+    }, 800);
+}
+
+function navigateQuestion(direction) {
+    const totalQuestions = quizData.length;
+    let nextIndex;
+
+    if (typeof direction === 'number') {
+        nextIndex = direction;
+    } else if (direction === 'next') {
+        nextIndex = (currentQuestion + 1) % totalQuestions;
+    } else if (direction === 'prev') {
+        nextIndex = (currentQuestion - 1 + totalQuestions) % totalQuestions;
+    } else {
+        return;
+    }
+
+    if (nextIndex === currentQuestion) return;
+    
+    currentQuestion = nextIndex;
+    renderQuestion();
+}
+
+function toggleReasoning() {
+    if (reasoningBtn.classList.contains('disabled')) return;
+    
+    const question = quizData[currentQuestion];
+    if (reasoningEl.style.display === 'block') {
+        reasoningEl.style.display = 'none';
+    } else {
+        reasoningTextEl.textContent = question.reasoning;
+        reasoningEl.style.display = 'block';
+    }
+}
+
+function submitTest(isTimeout = false) {
+    if (!isTimeout && !confirm('Are you sure you want to submit the quiz?')) {
+        return;
+    }
+    
+    clearInterval(totalTimeInterval);
+    clearInterval(questionTimeInterval);
+
+    let correct = 0;
+    let incorrect = 0;
+    let unanswered = 0;
+
+    quizData.forEach((question, index) => {
+        if (userAnswers[index] === null) {
+            unanswered++;
+        } else if (userAnswers[index] === question.correctAnswer) {
+            correct++;
+        } else {
+            incorrect++;
+        }
+    });
+
+    const totalQuestions = quizData.length;
+    const totalScore = (correct * MARK_PER_MCQ) - (incorrect * NEGATIVE_MARKING);
+    const totalMarks = totalQuestions * MARK_PER_MCQ;
+
+    correctCountEl.textContent = correct;
+    incorrectCountEl.textContent = incorrect;
+    unansweredCountEl.textContent = unanswered;
+    
+    const performancePercentage = (correct / totalQuestions) * 100;
+    performanceFillEl.style.width = `${performancePercentage}%`;
+
+    const savedStudentData = JSON.parse(localStorage.getItem('studentData') || '{}');
+    const lastAccessCode = localStorage.getItem('lastAccessCode') || 'N/A';
+    
+    let studentInfoHtml = '';
+    for (const [key, value] of Object.entries(savedStudentData)) {
+        studentInfoHtml += `<tr><td>${key}</td><td>${value}</td></tr>`;
+    }
+    studentInfoHtml += `<tr><td>Access Code Used</td><td>${lastAccessCode}</td></tr>`;
+    studentInfoTable.innerHTML = studentInfoHtml;
+
+    quizResultsTable.innerHTML = `
+        <tr><td>Quiz ID</td><td>${currentQuizId}</td></tr>
+        <tr><td>Total Questions</td><td>${totalQuestions}</td></tr>
+        <tr><td>Correct Answers</td><td>${correct}</td></tr>
+        <tr><td>Incorrect Answers</td><td>${incorrect}</td></tr>
+        <tr><td>Unanswered</td><td>${unanswered}</td></tr>
+        <tr><td>Your Score</td><td>${totalScore} / ${totalMarks}</td></tr>
+    `;
+
+    // --- NEW: SEND QUIZ RESULTS TO GOOGLE SHEET ---
+    if (lastAccessCode && lastAccessCode !== 'N/A') {
+        const resultsDataToSend = {
+            type: 'quiz_result',
+            accessCode: lastAccessCode,
+            quizId: currentQuizId,
+            totalQuestions: totalQuestions,
+            correct: correct,
+            incorrect: incorrect,
+            unanswered: unanswered,
+            totalScore: totalScore,
+            totalMarks: totalMarks,
+            studentName: savedStudentData['Student Name'] || 'Unknown' 
+        };
+
+        sendDataToSheet(resultsDataToSend)
+            .then(response => {
+                console.log('Sheet Results Update Response:', response);
+            })
+            .catch(error => {
+                console.error('Sheet Results Update Error:', error);
+                showQuizNotification('Submission Error', 'Failed to send results to the server sheet.', 'error');
+            });
+    }
+    // ----------------------------------------------------
+
+
+    const results = JSON.parse(localStorage.getItem('wcwQuizResults') || '[]');
+    results.push({
+        studentName: savedStudentData['Student Name'] || 'Unknown',
+        accessCode: lastAccessCode,
+        quizId: currentQuizId,
+        totalQuestions: totalQuestions,
+        correct: correct,
+        incorrect: incorrect,
+        unanswered: unanswered,
+        totalScore: totalScore,
+        totalMarks: totalMarks,
+        timestamp: new Date().toISOString()
+    });
+    localStorage.setItem('wcwQuizResults', JSON.stringify(results));
+    
+    showQuizNotification('Quiz Completed!', `Your score: ${totalScore}/${totalMarks}. Check the results page for details.`, 'info');
+    
+    showPage('results-page');
+}
+
+function restartTest() {
+    if (confirm('Are you sure you want to retake the full test? Your current progress will be lost.')) {
+        quizData = quizData_WCW_PHY_03;
+        currentQuestion = 0;
+        userAnswers = Array(quizData.length).fill(null);
+        timeLeft = quizData.length * TIME_PER_MCQ;
+        
+        showPage('quiz-page');
+        initQuiz();
+    }
+}
+
+function retakeIncorrect() {
+    const incorrectIndices = quizData.map((question, index) => {
+        const isIncorrect = userAnswers[index] !== null && 
+                            userAnswers[index] !== question.correctAnswer;
+        return isIncorrect ? index : -1;
+    }).filter(index => index !== -1);
+    
+    if (incorrectIndices.length === 0) {
+        showQuizNotification('No Incorrect Questions', 'You have no incorrect questions to retake!', 'info');
+        return;
+    }
+    
+    quizData = incorrectIndices.map(index => quizData_WCW_PHY_03[index]);
+    currentQuestion = 0;
+    userAnswers = Array(quizData.length).fill(null);
+    timeLeft = quizData.length * TIME_PER_MCQ;
+    
+    showPage('quiz-page');
+    initQuiz();
+}
+
+function viewAllMcqs() {
+    allMcqsList.innerHTML = '';
+    quizData_WCW_PHY_03.forEach((question, index) => {
+        const mcqItem = document.createElement('div');
+        mcqItem.classList.add('all-mcq-item');
+        mcqItem.innerHTML = `
+            <div class="question-text">${index + 1}. ${question.question}</div>
+            <div class="all-mcq-options">
+                ${question.options.map((option, optIndex) => `
+                    <div class="all-mcq-option ${optIndex === question.correctAnswer ? 'correct' : ''}">
+                        ${option}
+                    </div>
+                `).join('')}
+            </div>
+            <div class="all-mcq-reasoning">
+                <strong>Reasoning:</strong> ${question.reasoning}
+            </div>
+        `;
+        allMcqsList.appendChild(mcqItem);
+    });
+    showPage('all-mcqs-page');
+}</script>
